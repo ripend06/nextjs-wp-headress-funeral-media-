@@ -38,3 +38,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+## 保守注意点
+- ①カスタムタクソノミーのエリア追加は、大項目から小項目を追加する
+    - 都道府県から追加して、エリア追加する
+    - 例）東京都、練馬区の順に
+        - カスタムタクソノミーIDが都道府県の方を若い数字にする
+- ②カスタムタクソノミーのエリア追加は、都道府県とエリア両方必ず記載する

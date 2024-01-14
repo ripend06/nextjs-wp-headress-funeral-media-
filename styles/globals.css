@@ -105,3 +105,11 @@ a {
     color-scheme: dark;
   }
 }
+
+
+/**/
+.homeCity{
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}

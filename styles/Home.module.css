@@ -1,7 +1,8 @@
 .homePlace{
   margin:30px;
-  max-width: 500px;
+  max-width: 300px;
   width: 100%;
+  display: block;
 }
 .homePlace img{
   width: 100%;
