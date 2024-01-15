@@ -113,3 +113,18 @@ a {
   gap: 20px;
   flex-wrap: wrap;
 }
+
+/**/
+.mediaDatass{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  
+}
+.mediaDatas{
+  max-width: 300px;
+  width: 100%;
+}
+.mediaDatas img{
+  width: 100%;
+}
