@@ -56,12 +56,16 @@ function FacillityName({ filteredPosts, city, area, facillityName, mediaData }) 
             </div>
 
             <div>
-                <div>駐車場</div>
-                <div>駅近く</div>
-                <div>控室あり</div>
-                <div>宿泊可</div>
-                <div>安置施設</div>
-                <div>バリアフリー</div>
+                {post.acf.feature_tag && (
+                    <div>
+                        <div className={`${post.acf.feature_tag.includes('tag1') ? 'add' : ''} facility-feature`}>駐車場</div>
+                        <div className={`${post.acf.feature_tag.includes('tag2') ? 'add' : ''} facility-feature`}>駅近く</div>
+                        <div className={`${post.acf.feature_tag.includes('tag3') ? 'add' : ''} facility-feature`}>控室あり</div>
+                        <div className={`${post.acf.feature_tag.includes('tag4') ? 'add' : ''} facility-feature`}>宿泊可</div>
+                        <div className={`${post.acf.feature_tag.includes('tag5') ? 'add' : ''} facility-feature`}>安置施設</div>
+                        <div className={`${post.acf.feature_tag.includes('tag6') ? 'add' : ''} facility-feature`}>バリアフリー</div>
+                    </div>
+                )}
             </div>
         </Link>
         ))}
