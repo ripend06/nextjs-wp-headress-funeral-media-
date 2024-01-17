@@ -9,14 +9,15 @@ import { getAllPostsData } from '@/libs/place/getAllPostsPlaceData';
 import { getPrefecturePost } from '@/libs/place/getPrefecturePost';
 
 
-export default function Home( {prefecturePostsData, prefectureTokyoPostsData} ) {
+export default function Place( {prefecturePostsData, prefectureTokyoPostsData} ) {
 
   return (
     <>
             <Head>
-                <title>test</title>
+                <title>葬儀場一覧</title>
             </Head>
 
+            <h3>葬儀場一覧</h3>
             <h3>東京都の市区町村から探す</h3>
             <div className="homeCity">
             {prefectureTokyoPostsData

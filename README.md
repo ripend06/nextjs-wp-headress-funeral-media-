@@ -41,8 +41,27 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 
 ## 保守注意点
-- ①カスタムタクソノミーのエリア追加は、大項目から小項目を追加する
+- ①カスタムタクソノミーのエリア追加は、都道府県とエリア両方必ず記載する
+- ②カスタムタクソノミーのエリア追加は、大項目から小項目を追加する
     - 都道府県から追加して、エリア追加する
     - 例）東京都、練馬区の順に
         - カスタムタクソノミーIDが都道府県の方を若い数字にする
-- ②カスタムタクソノミーのエリア追加は、都道府県とエリア両方必ず記載する
+- ③カスタムフィールドの、都道府県、市町村は必ず記載する
+- ④カスタム投稿タイプと、カスタムタクソノミーのRESTAPIをtrueにする
+```
+// カスタム投稿タイプの登録
+$place_args = array(
+	'show_in_rest' => true, // ここに追加します
+);
+register_post_type( apply_filters( 'news_post_type', 'place' ), apply_filters( 'news_post_type_args', $place_args ));
+
+// カスタム投稿タイプのタクソノミー登録
+add_action( 'init', 'place_taxonomies', 0 );
+function place_taxonomies() {
+register_taxonomy(
+array( 'hierarchical' => true,
+      'show_in_rest' => true,// ここに追加します
+),
+);
+}
+```

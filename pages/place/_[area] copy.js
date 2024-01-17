@@ -2,26 +2,22 @@ import styles from '@/styles/Home.module.css'
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { getAllPostsData } from '@/libs/place/getAllPostsPlaceData';
-import { getAllPostsSlugData } from '@/libs/place/getAllPostsSlugData';
-// import { filteredPostsPath } from '@/libs/place/filteredPostsPath';
-// import { updatedAllPostsData } from '@/libs/place/updatedAllPostsData';
 
 
 //都道府県別ソートページ
-function Area({ allPostsData, area, totalPages, filterPathData }) {
+function Area({ allPostsData, area, totalPages }) {
 
-  console.log('totalPages', totalPages);
     //ページネーション番号付与Placeデータ
-    // const paths = allPostsData.flatMap((post) => {
-    //   const totalPages = Math.ceil(allPostsData.filter(item => item.acf.address.address_prefecture === post.acf.address.address_prefecture).length / 8);
-    //   return Array.from({ length: totalPages }, (_, index) => ({
-    //     params: {
-    //       area: post.acf.address.address_prefecture.toString(),
-    //       page: (index + 1).toString(), // ページ番号を指定
-    //       item: post,
-    //     },
-    //   }));
-    // });
+    const paths = allPostsData.flatMap((post) => {
+      const totalPages = Math.ceil(allPostsData.filter(item => item.acf.address.address_prefecture === post.acf.address.address_prefecture).length / 8);
+      return Array.from({ length: totalPages }, (_, index) => ({
+        params: {
+          area: post.acf.address.address_prefecture.toString(),
+          page: (index + 1).toString(), // ページ番号を指定
+          item: post,
+        },
+      }));
+    });
     //console.log('paths:',paths);
 
 
@@ -33,22 +29,22 @@ function Area({ allPostsData, area, totalPages, filterPathData }) {
     const pageValueUrl = paramsURL.get('page');
 
     const pageValue = pageValueUrl || '1';
-    console.log('pageValue', pageValue);
+    //console.log('pageValue', pageValue);
 
 
     //URLのページ番号に対応するPlaceデータをソート
     const postsPerPage = 8;
     const startIdx = (parseInt(pageValue) - 1) * postsPerPage;
     const endIdx = startIdx + postsPerPage;
-    const displayedPosts = filterPathData
-      //.filter(post => post.acf.address.address_prefecture === area)
+    const displayedPosts = allPostsData
+      .filter(post => post.acf.address.address_prefecture === area)
       .slice(startIdx, endIdx);
 
-    console.log('Display posts:',displayedPosts);
+    //console.log('Display posts:',displayedPosts);
 
 
     return (
-      <>
+        <>
 
             areaPage
             <h3>
@@ -100,72 +96,15 @@ export default Area;
 export async function getStaticProps({ params }) {
     try {
       const area = params.area;
-      console.log('params', params);
 
       // getAllPostsData関数を呼ぶ
       const allPostsData = await getAllPostsData();
 
-      // updatedAllPostsData関数を呼ぶ
-      // const updatedAllPostsData = await updatedAllPostsData();
-      // console.log('updatedAllPostsData', updatedAllPostsData);
-
-      // // filteredPostsPath関数を呼ぶ
-      // const filterPathData = await filteredPostsPath();
-
-
-      const getAllPostsSlugDataB = await getAllPostsSlugData();
-
-
-
-      // IdとSlugオブジェクトの作成
-      const postIdSlug = getAllPostsSlugDataB.map((post) => ({
-        id: post.id,
-        slug: post.slug,
-        // name: post.name,
-        // parent: post.parent
-      }));
-
-      //console.log('postIdSlug', postIdSlug);
-    
-      // idとslug情報を入れて、allPostsDataを更新する
-      const updatedAllPostsData = allPostsData.map((post) => ({
-        ...post,
-        area: post.area.map((id) => ({
-          id: id,
-          slug: postIdSlug.find((p) => p.id === id).slug
-        })),
-      }));
-
-      //const areaData = updatedAllPostsData.map((post) => (post.area));
-      //console.log('', areaData);
-
-
-
-
-      const filterPathData = updatedAllPostsData.map((post) => ({
-        ...post,
-        area: post.area.filter((areaObj) => areaObj.slug === params.area),
-      }));
-
-      //console.log('filteredPosts', filteredPosts);
-
-
-
-
-
-
-      //　総ページ数を取得
-      const totalPages = Math.ceil(filterPathData.length / 8);
-      //console.log('totalPages', totalPages);
-
-
-
       return {
         props: {
           allPostsData,
-          filterPathData,
           area,
-          totalPages,
+          totalPages: Math.ceil(allPostsData.filter(post => post.acf.address.address_prefecture === area).length / 8),
         },
       };
     } catch (error) {
@@ -174,7 +113,6 @@ export async function getStaticProps({ params }) {
       return {
         props: {
           allPostsData: [],
-          filterPathData: [],
           area: [],
           totalPages: 0,
         },
@@ -190,26 +128,17 @@ export async function getStaticPaths() {
 
       // getAllPostsData関数を呼ぶ
       const allPostsDataA = await getAllPostsData();
-      const getAllPostsSlugDataA = await getAllPostsSlugData();
-      //console.log(getAllPostsSlugDataA);
 
       //動的ルーティングpath実装
-      // const paths = allPostsDataA.flatMap((post) => {
-      //   const totalPages = Math.ceil(allPostsDataA.filter(item => item.acf.address.address_prefecture === post.acf.address.address_prefecture).length / 8);
-      //   return Array.from({ length: totalPages }, (_, index) => ({
-      //     params: {
-      //       area: post.acf.address.address_prefecture.toString(),
-      //       //page: (index + 1).toString(), // ページ番号を指定 ⭐pageはいらないかも
-      //     },
-      //   }));
-      // });
-      // エリアのデータを元に動的なパスを生成
-      const paths = getAllPostsSlugDataA.map((post) => ({
-        params: {
-          area: post.slug,
-          id: post.id
-        },
-      }));
+      const paths = allPostsDataA.flatMap((post) => {
+        const totalPages = Math.ceil(allPostsDataA.filter(item => item.acf.address.address_prefecture === post.acf.address.address_prefecture).length / 8);
+        return Array.from({ length: totalPages }, (_, index) => ({
+          params: {
+            area: post.acf.address.address_prefecture.toString(),
+            page: (index + 1).toString(), // ページ番号を指定 ⭐pageはいらないかも
+          },
+        }));
+      });
 
       //console.log(paths);
       //console.log(totalPages);
