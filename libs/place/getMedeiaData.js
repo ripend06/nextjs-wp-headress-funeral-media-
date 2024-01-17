@@ -17,7 +17,7 @@ export async function getMediaData(filteredPosts) {
       // フラット化して一括でメディア情報を取得
       const mediaData = await Promise.all(mediaPromises.flat());
   
-      console.log('Media Data for non-empty img_slider values:', mediaData);
+      //console.log('Media Data for non-empty img_slider values:', mediaData);
   
       return mediaData;
     } catch (error) {

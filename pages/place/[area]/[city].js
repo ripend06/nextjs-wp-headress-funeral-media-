@@ -18,7 +18,7 @@ function City({ allPostsData, city, area, totalPages }) {
         },
       }));
     });
-    console.log('paths:',paths);
+    //console.log('paths:',paths);
 
 
     //URLからページ場号取得
@@ -29,7 +29,7 @@ function City({ allPostsData, city, area, totalPages }) {
     const pageValueUrl = paramsURL.get('page');
 
     const pageValue = pageValueUrl || '1';
-    console.log('pageValue', pageValue);
+    //console.log('pageValue', pageValue);
 
 
     //URLのページ番号に対応するPlaceデータをソート
@@ -40,7 +40,7 @@ function City({ allPostsData, city, area, totalPages }) {
       .filter(post => post.acf.address.address_city === city)
       .slice(startIdx, endIdx);
 
-    console.log('Display posts:',displayedPosts);
+    //console.log('Display posts:',displayedPosts);
 
 
     return (
@@ -55,7 +55,7 @@ function City({ allPostsData, city, area, totalPages }) {
             <h3>{pageValue}/{totalPages}ページ目</h3>
             {displayedPosts.map((post) => (
             <Link href={`/place/${post.acf.address.address_prefecture}/${post.acf.address.address_city}/${post.title.rendered}`} className={styles.homePlace} key={post.id}>
-                {post._embedded['wp:featuredmedia'] && (
+                {post._embedded && post._embedded['wp:featuredmedia'] && (
                 <div>
                     {post._embedded['wp:featuredmedia'].map((featuredmedia) => (
                     <img src={featuredmedia.source_url} key={featuredmedia.id} alt={`${post.title.rendered}`} />

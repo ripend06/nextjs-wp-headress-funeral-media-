@@ -2,21 +2,23 @@ import styles from '@/styles/Home.module.css'
 import Link from 'next/link';
 import { getAllPostsData } from '@/libs/place/getAllPostsPlaceData';
 import { getMediaData } from '@/libs/place/getMedeiaData';
+import { getNearbyPosts } from '@/libs/place/getNearbyPosts';
 
 
 //施設情報ページ
-function FacillityName({ filteredPosts, city, area, facillityName, mediaData }) {
+function FacillityName({ filteredPosts, city, area, facillityName, mediaData, nearbyPostsData }) {
 
-    //対応する施設名でソート
-    //const filteredPosts = allPostsData.filter((post) => post.title.rendered === facillityName);
-
-    console.log('mediaData', mediaData);
+    //console.log('mediaData', mediaData);
 
     return (
         <>
 
         facillityNamePage
         <h3>
+            <Link href="/">ホーム</Link>
+            {">"}
+            <Link href={`/place/`}>葬儀一覧</Link>
+            {">"}
             <Link href={`/place/${area}`}>{area}</Link>
             {">"}
             <Link href={`/place/${area}/${city}`}>{city}</Link>
@@ -31,8 +33,8 @@ function FacillityName({ filteredPosts, city, area, facillityName, mediaData }) 
         ))}
         </div>
         {filteredPosts.map((post) => (
-        <Link href={`/place/${post.acf.address.address_prefecture}/${post.acf.address.address_city}/${post.title.rendered}`} className={styles.homePlace} key={post.id}>
-            {post._embedded['wp:featuredmedia'] && (
+        <div key={post.id}>
+            {post._embedded && post._embedded['wp:featuredmedia'] && (
             <div>
                 {post._embedded['wp:featuredmedia'].map((featuredmedia) => (
                 <img src={featuredmedia.source_url} key={featuredmedia.id} alt={`${post.title.rendered}`} />
@@ -55,6 +57,7 @@ function FacillityName({ filteredPosts, city, area, facillityName, mediaData }) 
             {post.acf.address.address_2}
             </div>
 
+            <h3>施設特徴</h3>
             <div>
                 {post.acf.feature_tag && (
                     <div>
@@ -67,7 +70,54 @@ function FacillityName({ filteredPosts, city, area, facillityName, mediaData }) 
                     </div>
                 )}
             </div>
-        </Link>
+            <div>
+                {filteredPosts.map((post) => (
+                    <div key={post.id}>
+                        {post.acf.feature_text}
+                    </div>
+                ))}
+            </div>
+
+            <h3>基本情報</h3>
+            <div>
+                {filteredPosts.map((post) => (
+                    <div key={post.id}>
+                        {post.acf.feature_text}
+                        <div>
+                            <div>駐車場:{`${post.acf.facility.includes('facility1') ? 'あり' : 'なし'}`}</div>
+                            <div>安置施設:{`${post.acf.facility.includes('facility2') ? 'あり' : 'なし'}`}</div>
+                            <div>控室:{`${post.acf.facility.includes('facility3') ? 'あり' : 'なし'}`}</div>
+                            <div>併設火葬場:{`${post.acf.facility.includes('facility4') ? 'あり' : 'なし'}`}</div>
+                            <div>宿泊室:{`${post.acf.facility.includes('facility5') ? 'あり' : 'なし'}`}</div>
+                            <div>会食室:{`${post.acf.facility.includes('facility6') ? 'あり' : 'なし'}`}</div>
+                            <div>法要室:{`${post.acf.facility.includes('facility7') ? 'あり' : 'なし'}`}</div>
+                            <div>お風呂・シャワー:{`${post.acf.facility.includes('facility8') ? 'あり' : 'なし'}`}</div>
+                            <div>キッズ・託児所:{`${post.acf.facility.includes('facility9') ? 'あり' : 'なし'}`}</div>
+                            <div>バリアフリー:{`${post.acf.facility.includes('facility10') ? 'あり' : 'なし'}`}</div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <h3>近くの葬儀場</h3>
+            <div class="nearbyPostsDatas">
+                {nearbyPostsData.map((post) => (
+                    <div key={post.id} class="nearbyPostsData">
+                        <Link href={`/place/${post.acf.address.address_prefecture}/${post.acf.address.address_city}/${post.title.rendered}`} className={styles.homePlace}>
+                            {post._embedded && post._embedded['wp:featuredmedia'] && (
+                            <div>
+                                {post._embedded['wp:featuredmedia'].map((featuredmedia) => (
+                                <img src={featuredmedia.source_url} key={featuredmedia.id} alt={`${post.title.rendered}`} />
+                                ))}
+                            </div>
+                            )}
+                            <h2>{post.title.rendered}</h2>
+                            <p>{post.acf.address.address_city}</p>
+                        </Link>
+                    </div>
+                ))}
+            </div>
+        </div>
         ))}
     </>
     );
@@ -79,91 +129,52 @@ export default FacillityName;
 //SSG実装
 export async function getStaticProps({ params }) {
     try {
-      const city = params.city;
-      const area = params.area;
-      const facillityName = params.facillityName;
+        const city = params.city;
+        const area = params.area;
+        const facillityName = params.facillityName;
 
-      // getAllPostsData関数を呼ぶ
-      const allPostsData = await getAllPostsData();
+        // getAllPostsData関数を呼ぶ
+        const allPostsData = await getAllPostsData();
 
-      //対応する施設名でソート
-    const filteredPosts = allPostsData.filter((post) => post.title.rendered === facillityName);
+        //対応する施設名でソート
+        const filteredPosts = allPostsData.filter((post) => post.title.rendered === facillityName);
 
-      // 各記事の img_slider を取り出して、それぞれのメディア情報を取得
-        //const mediaPromises = [];
-        //console.log('filteredPosts', filteredPosts);
-
-        // const mediaPromises = filteredPosts.map(async (post) => {
-        //     const nonEmptyValues = Object.values(post.acf.img_slider).filter((value) => value !== '');
-            
-        //     // 各非空のメディアIDに対してfetchを行う
-        //     const mediaPromises = nonEmptyValues.map(async (mediaId) => {
-        //       const mediaRes = await fetch(`http://funeralmedia.local/wp-json/wp/v2/media/${mediaId}?_fields=guid,id`);
-        //       return mediaRes.json();
-        //     });
-            
-        //     // メディア情報の取得が完了するまで待つ
-        //     const mediaData = await Promise.all(mediaPromises);
-            
-        //     //console.log('Media Data for non-empty img_slider values:', mediaData);
-            
-        //     return mediaData;
-        //   });
-          
-        //   const mediaData = await Promise.all(mediaPromises.flat());
-          
-        // console.log('Media Data for non-empty img_slider values:', mediaData);
-
+        // getMediaData関数を呼ぶ
         const mediaData = await getMediaData(filteredPosts);
-
-
-        // const mediaPromises = filteredPosts.flatMap((post) => {
-        //     if (post.acf.img_slider) {
-        //         return Object.values(post.acf.img_slider)
-        //             .filter((mediaId) => mediaId) // 空の値を除外
-        //             .map((mediaId) => {
-        //                 return fetch(`http://funeralmedia.local/wp-json/wp/v2/media/${mediaId}?_fields=guid`)
-        //                     .then((mediaRes) => {
-        //                         if (!mediaRes.ok) {
-        //                             throw new Error(`Failed to fetch media for ID ${mediaId}`);
-        //                         }
-        //                         return mediaRes.json();
-        //                     });
-        //             });
-        //     }
-        //     return [];
-        // });
-        
-        // const mediaData = await Promise.all(mediaPromises.flat());
-
         // console.log('mediaData', mediaData);
 
 
-      return {
-        props: {
-          filteredPosts,
-          facillityName,
-          city,
-          area,
-          mediaData,
-        //   totalPages: Math.ceil(allPostsData.filter(post => post.acf.address.address_city === city).length / 8),
-        },
-      };
+        // getNearbyPosts関数を呼ぶ
+        const nearbyPostsData = await getNearbyPosts(allPostsData, city, area);
+
+
+        return {
+            props: {
+            filteredPosts,
+            nearbyPostsData,
+            facillityName,
+            city,
+            area,
+            mediaData,
+            //   totalPages: Math.ceil(allPostsData.filter(post => post.acf.address.address_city === city).length / 8),
+            },
+        };
     } catch (error) {
-      console.error('propsデータの取得エラー:', error);
+        console.error('propsデータの取得エラー:', error);
   
-      return {
-        props: {
-          filteredPosts: [],
-          city: [],
-          area: [],
-          facillityName: [],
-          mediaData: [],
-        //   totalPages: 0,
-        },
-      };
+        return {
+            props: {
+                filteredPosts: [],
+                nearbyPostsData: [],
+                city: [],
+                area: [],
+                facillityName: [],
+                mediaData: [],
+            //   totalPages: 0,
+            },
+        };
     }
-  }
+}
 
 
 //getStaticPaths関数
