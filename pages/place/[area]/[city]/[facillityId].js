@@ -3,12 +3,16 @@ import Link from 'next/link';
 import { getAllPostsData } from '@/libs/place/getAllPostsPlaceData';
 import { getMediaData } from '@/libs/place/getMedeiaData';
 import { getNearbyPosts } from '@/libs/place/getNearbyPosts';
+import { getAllPostsSlugData } from '@/libs/place/getAllPostsSlugData';
+import { updatedPostsData } from '@/libs/place/updatedPostsData';
 
 
 //施設情報ページ
-function FacillityName({ filteredPosts, city, area, facillityName, mediaData, nearbyPostsData }) {
+function FacillityName({ filteredPosts, city, area, facillityName, mediaData, nearbyPostsData, facillityId }) {
 
     //console.log('mediaData', mediaData);
+    console.log('filteredPosts', filteredPosts);
+    console.log('facillityId', facillityId);
 
     return (
         <>
@@ -103,7 +107,7 @@ function FacillityName({ filteredPosts, city, area, facillityName, mediaData, ne
             <div class="nearbyPostsDatas">
                 {nearbyPostsData.map((post) => (
                     <div key={post.id} class="nearbyPostsData">
-                        <Link href={`/place/${post.acf.address.address_prefecture}/${post.acf.address.address_city}/${post.title.rendered}`} className={styles.homePlace}>
+                        <Link href={`/place/${post.area[0].parentSlug}/${post.area[0].slug}/${post.id}`} className={styles.homePlace}>
                             {post._embedded && post._embedded['wp:featuredmedia'] && (
                             <div>
                                 {post._embedded['wp:featuredmedia'].map((featuredmedia) => (
@@ -131,13 +135,25 @@ export async function getStaticProps({ params }) {
     try {
         const city = params.city;
         const area = params.area;
-        const facillityName = params.facillityName;
+        const facillityId = params.facillityId;
+        console.log('facillityId:', facillityId)
 
         // getAllPostsData関数を呼ぶ
         const allPostsData = await getAllPostsData();
 
+
+        const getAllPostsSlugDataB = await getAllPostsSlugData();
+        //console.log('getAllPostsSlugDataB', getAllPostsSlugDataB);
+
+        // updatedPostsData関数を呼ぶ
+        const updatedPostsDataB = await updatedPostsData(allPostsData, getAllPostsSlugDataB);
+        //console.log('updatedPostsData', updatedPostsDataB);
+
+
+
         //対応する施設名でソート
-        const filteredPosts = allPostsData.filter((post) => post.title.rendered === facillityName);
+        const filteredPosts = updatedPostsDataB.filter((post) => post.id == facillityId);
+
 
         // getMediaData関数を呼ぶ
         const mediaData = await getMediaData(filteredPosts);
@@ -145,14 +161,25 @@ export async function getStaticProps({ params }) {
 
 
         // getNearbyPosts関数を呼ぶ
-        const nearbyPostsData = await getNearbyPosts(allPostsData, city, area);
+        const nearbyPostsData = await getNearbyPosts(updatedPostsDataB, city, area);
+
+
+        // const facillityName = filteredPosts.map((post) => {
+        //     return post.title.rendered;
+        // });
+        // const parentName = filteredPosts.map((post) => {
+        //     return post.area[0].parentName;
+        // });
+
+
 
 
         return {
             props: {
             filteredPosts,
             nearbyPostsData,
-            facillityName,
+            //facillityName,
+            facillityId,
             city,
             area,
             mediaData,
@@ -168,7 +195,8 @@ export async function getStaticProps({ params }) {
                 nearbyPostsData: [],
                 city: [],
                 area: [],
-                facillityName: [],
+                //facillityName: [],
+                facillityId: [],
                 mediaData: [],
             //   totalPages: 0,
             },
@@ -182,20 +210,34 @@ export async function getStaticPaths() {
     try {
 
       // getAllPostsData関数を呼ぶ
-      const allPostsDataA = await getAllPostsData();
+      const allPostsData = await getAllPostsData();
+      //console.log('allPostsData', allPostsData);
 
-      // 動的ルーティングpath実装
-      const paths = allPostsDataA.flatMap((post) => {
+      const getAllPostsSlugDataB = await getAllPostsSlugData();
+      //console.log('getAllPostsSlugDataB', getAllPostsSlugDataB);
+
+      // updatedPostsData関数を呼ぶ
+      const updatedPostsDataB = await updatedPostsData(allPostsData, getAllPostsSlugDataB);
+      //console.log('updatedPostsData', updatedPostsDataB);
+
+
+      //動的ルーティングpath実装
+      // getStaticPathsに必要なパスの情報を組み立て
+      const paths = updatedPostsDataB.map((post) => {
+        const areaSlug = post.area[0].parentSlug;
+        const citySlug = post.area[0].slug;
+        const titleSlug = post.id.toString();
+
         return {
-            params: {
-                facillityName: post.title.rendered.toString(),
-                area: post.acf.address.address_prefecture.toString(),
-                city: post.acf.address.address_city.toString(),
-            },
+          params: {
+            area: areaSlug,
+            city: citySlug,
+            facillityId: titleSlug,
+          },
         };
       });
 
-      //console.log(paths);
+      console.log('paths:', paths);
       //console.log(totalPages);
 
       return {

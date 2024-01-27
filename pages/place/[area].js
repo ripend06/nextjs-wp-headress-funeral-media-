@@ -3,14 +3,18 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { getAllPostsData } from '@/libs/place/getAllPostsPlaceData';
 import { getAllPostsSlugData } from '@/libs/place/getAllPostsSlugData';
-// import { filteredPostsPath } from '@/libs/place/filteredPostsPath';
-// import { updatedAllPostsData } from '@/libs/place/updatedAllPostsData';
+import { filteredPostsPath } from '@/libs/place/filteredPostsPath';
+import { updatedPostsData } from '@/libs/place/updatedPostsData';
 
 
 //都道府県別ソートページ
-function Area({ allPostsData, area, totalPages, filterPathData }) {
+function Area({ allPostsData, area, city, totalPages, filterPathData, updatedPostsDataB }) {
 
   console.log('totalPages', totalPages);
+  console.log('updatedPostsDataB', updatedPostsDataB);
+  console.log('filterPathData', filterPathData);
+  //console.log('allPostsData', allPostsData);
+
     //ページネーション番号付与Placeデータ
     // const paths = allPostsData.flatMap((post) => {
     //   const totalPages = Math.ceil(allPostsData.filter(item => item.acf.address.address_prefecture === post.acf.address.address_prefecture).length / 8);
@@ -56,7 +60,7 @@ function Area({ allPostsData, area, totalPages, filterPathData }) {
             の葬儀場情報</h3>
             <h3>{pageValue}/{totalPages}ページ目</h3>
             {displayedPosts.map((post) => (
-            <Link href={`/place/${post.acf.address.address_prefecture}/${post.acf.address.address_city}/${post.title.rendered}`} className={styles.homePlace} key={post.id}>
+            <Link href={`/place/${post.area[0].parentSlug}/${post.area[0].slug}/${post.id}`} className={styles.homePlace} key={post.id}>
                 {post._embedded && post._embedded['wp:featuredmedia'] && (
                   <div>
                     {post._embedded['wp:featuredmedia'].map((featuredmedia) => (
@@ -99,59 +103,29 @@ export default Area;
 //SSG実装
 export async function getStaticProps({ params }) {
     try {
+      //const city = params.city;
       const area = params.area;
       console.log('params', params);
 
       // getAllPostsData関数を呼ぶ
       const allPostsData = await getAllPostsData();
-
-      // updatedAllPostsData関数を呼ぶ
-      // const updatedAllPostsData = await updatedAllPostsData();
-      // console.log('updatedAllPostsData', updatedAllPostsData);
-
-      // // filteredPostsPath関数を呼ぶ
-      // const filterPathData = await filteredPostsPath();
-
+      //console.log('allPostsData', allPostsData);
 
       const getAllPostsSlugDataB = await getAllPostsSlugData();
+      //console.log('getAllPostsSlugDataB', getAllPostsSlugDataB);
+
+      // updatedPostsData関数を呼ぶ
+      const updatedPostsDataB = await updatedPostsData(allPostsData, getAllPostsSlugDataB);
+      //console.log('updatedPostsData', updatedPostsDataB);
 
 
 
-      // IdとSlugオブジェクトの作成
-      const postIdSlug = getAllPostsSlugDataB.map((post) => ({
-        id: post.id,
-        slug: post.slug,
-        // name: post.name,
-        // parent: post.parent
-      }));
-
-      //console.log('postIdSlug', postIdSlug);
-    
-      // idとslug情報を入れて、allPostsDataを更新する
-      const updatedAllPostsData = allPostsData.map((post) => ({
-        ...post,
-        area: post.area.map((id) => ({
-          id: id,
-          slug: postIdSlug.find((p) => p.id === id).slug
-        })),
-      }));
-
-      //const areaData = updatedAllPostsData.map((post) => (post.area));
-      //console.log('', areaData);
-
-
-
-
-      const filterPathData = updatedAllPostsData.map((post) => ({
-        ...post,
-        area: post.area.filter((areaObj) => areaObj.slug === params.area),
-      }));
-
-      //console.log('filteredPosts', filteredPosts);
-
-
-
-
+      // updatedPostsDataBからparentが0かつslugがparams.areaと一致するものを取り出す
+      const filterPathData = updatedPostsDataB
+      .filter((post) =>
+        post.area.some((area) => area.parentSlug === params.area)
+      );
+      //console.log('filterPathData:', filterPathData);
 
 
       //　総ページ数を取得
@@ -159,13 +133,14 @@ export async function getStaticProps({ params }) {
       //console.log('totalPages', totalPages);
 
 
-
       return {
         props: {
           allPostsData,
-          filterPathData,
           area,
+          //city,
           totalPages,
+          updatedPostsDataB,
+          filterPathData,
         },
       };
     } catch (error) {
@@ -174,9 +149,11 @@ export async function getStaticProps({ params }) {
       return {
         props: {
           allPostsData: [],
-          filterPathData: [],
           area: [],
+          //city: [],
           totalPages: 0,
+          updatedPostsDataB: [],
+          filterPathData: [],
         },
       };
     }
@@ -189,29 +166,34 @@ export async function getStaticPaths() {
     try {
 
       // getAllPostsData関数を呼ぶ
-      const allPostsDataA = await getAllPostsData();
-      const getAllPostsSlugDataA = await getAllPostsSlugData();
-      //console.log(getAllPostsSlugDataA);
+      const allPostsData = await getAllPostsData();
+      //console.log('allPostsData', allPostsData);
+
+      const getAllPostsSlugDataB = await getAllPostsSlugData();
+      //console.log('getAllPostsSlugDataB', getAllPostsSlugDataB);
+
+      // updatedPostsData関数を呼ぶ
+      const updatedPostsDataB = await updatedPostsData(allPostsData, getAllPostsSlugDataB);
+      //console.log('updatedPostsData', updatedPostsDataB);
+
 
       //動的ルーティングpath実装
-      // const paths = allPostsDataA.flatMap((post) => {
-      //   const totalPages = Math.ceil(allPostsDataA.filter(item => item.acf.address.address_prefecture === post.acf.address.address_prefecture).length / 8);
-      //   return Array.from({ length: totalPages }, (_, index) => ({
-      //     params: {
-      //       area: post.acf.address.address_prefecture.toString(),
-      //       //page: (index + 1).toString(), // ページ番号を指定 ⭐pageはいらないかも
-      //     },
-      //   }));
-      // });
-      // エリアのデータを元に動的なパスを生成
-      const paths = getAllPostsSlugDataA.map((post) => ({
-        params: {
-          area: post.slug,
-          id: post.id
-        },
-      }));
+      // getStaticPathsに必要なパスの情報を組み立て
+      const paths = updatedPostsDataB.map((post) => {
+        const areaSlug = post.area[0].parentSlug;
+        const citySlug = post.area[0].slug;
+        const titleSlug = post.id.toString();
 
-      //console.log(paths);
+        return {
+          params: {
+            area: areaSlug,
+            city: citySlug,
+            facillityId: titleSlug,
+          },
+        };
+      });
+
+      console.log('paths:', paths);
       //console.log(totalPages);
 
       return {

@@ -2,22 +2,31 @@ import styles from '@/styles/Home.module.css'
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { getAllPostsData } from '@/libs/place/getAllPostsPlaceData';
+import { getAllPostsSlugData } from '@/libs/place/getAllPostsSlugData';
+import { filteredPostsPath } from '@/libs/place/filteredPostsPath';
+import { updatedPostsData } from '@/libs/place/updatedPostsData';
 
 
-//市町村別ソートページ
-function City({ allPostsData, city, area, totalPages }) {
+//都道府県別ソートページ
+function Area({ allPostsData, area, city, totalPages, filterPathData, updatedPostsDataB, cityName }) {
+
+  console.log('totalPages', totalPages);
+  console.log('updatedPostsDataB', updatedPostsDataB);
+  console.log('filterPathData', filterPathData);
+  console.log('cityName', cityName);
+  //console.log('allPostsData', allPostsData);
 
     //ページネーション番号付与Placeデータ
-    const paths = allPostsData.flatMap((post) => {
-      const totalPages = Math.ceil(allPostsData.filter(item => item.acf.address.address_city === post.acf.address.address_city).length / 8);
-      return Array.from({ length: totalPages }, (_, index) => ({
-        params: {
-          city: post.acf.address.address_city.toString(),
-          page: (index + 1).toString(), // ページ番号を指定
-          item: post,
-        },
-      }));
-    });
+    // const paths = allPostsData.flatMap((post) => {
+    //   const totalPages = Math.ceil(allPostsData.filter(item => item.acf.address.address_prefecture === post.acf.address.address_prefecture).length / 8);
+    //   return Array.from({ length: totalPages }, (_, index) => ({
+    //     params: {
+    //       area: post.acf.address.address_prefecture.toString(),
+    //       page: (index + 1).toString(), // ページ番号を指定
+    //       item: post,
+    //     },
+    //   }));
+    // });
     //console.log('paths:',paths);
 
 
@@ -29,38 +38,36 @@ function City({ allPostsData, city, area, totalPages }) {
     const pageValueUrl = paramsURL.get('page');
 
     const pageValue = pageValueUrl || '1';
-    //console.log('pageValue', pageValue);
+    console.log('pageValue', pageValue);
 
 
     //URLのページ番号に対応するPlaceデータをソート
     const postsPerPage = 8;
     const startIdx = (parseInt(pageValue) - 1) * postsPerPage;
     const endIdx = startIdx + postsPerPage;
-    const displayedPosts = allPostsData
-      .filter(post => post.acf.address.address_city === city)
+    const displayedPosts = filterPathData
+      //.filter(post => post.acf.address.address_prefecture === area)
       .slice(startIdx, endIdx);
 
-    //console.log('Display posts:',displayedPosts);
+    console.log('Display posts:',displayedPosts);
 
 
     return (
-        <>
+      <>
 
-            CityPage
+            areaPage
             <h3>
-                <Link href={`/place/${area}`}>{area}</Link>
-                {">"}
-                <Link href={`/place/${area}/${city}`}>{city}</Link>
+            <Link href={`/place/${area}`}>{area}{city}</Link>
             の葬儀場情報</h3>
             <h3>{pageValue}/{totalPages}ページ目</h3>
             {displayedPosts.map((post) => (
-            <Link href={`/place/${post.acf.address.address_prefecture}/${post.acf.address.address_city}/${post.title.rendered}`} className={styles.homePlace} key={post.id}>
+            <Link href={`/place/${post.area[0].parentSlug}/${post.area[0].slug}/${post.id}`} className={styles.homePlace} key={post.id}>
                 {post._embedded && post._embedded['wp:featuredmedia'] && (
-                <div>
+                  <div>
                     {post._embedded['wp:featuredmedia'].map((featuredmedia) => (
-                    <img src={featuredmedia.source_url} key={featuredmedia.id} alt={`${post.title.rendered}`} />
+                      <img src={featuredmedia.source_url} key={featuredmedia.id} alt={`${post.title.rendered}`} />
                     ))}
-                </div>
+                  </div>
                 )}
                 <div>{post.title.rendered}</div>
                 {/* アクセス表示 */}
@@ -72,7 +79,7 @@ function City({ allPostsData, city, area, totalPages }) {
                 </div>
                 {/* 住所表示 */}
                 <div>
-                {post.acf.address.address_city}
+                {post.acf.address.address_prefecture}
                 {post.acf.address.address_city}
                 {post.acf.address.address_1}
                 {post.acf.address.address_2}
@@ -91,7 +98,7 @@ function City({ allPostsData, city, area, totalPages }) {
     );
 }
 
-export default City;
+export default Area;
 
 
 //SSG実装
@@ -99,17 +106,50 @@ export async function getStaticProps({ params }) {
     try {
       const city = params.city;
       const area = params.area;
+      console.log('params', params);
 
       // getAllPostsData関数を呼ぶ
       const allPostsData = await getAllPostsData();
+      //console.log('allPostsData', allPostsData);
+
+      const getAllPostsSlugDataB = await getAllPostsSlugData();
+      //console.log('getAllPostsSlugDataB', getAllPostsSlugDataB);
+
+      // updatedPostsData関数を呼ぶ
+      const updatedPostsDataB = await updatedPostsData(allPostsData, getAllPostsSlugDataB);
+      //console.log('updatedPostsData', updatedPostsDataB);
+
+
+
+      // updatedPostsDataBからparentが0かつslugがparams.areaと一致するものを取り出す
+      const filterPathData = updatedPostsDataB
+      .filter((post) =>
+        post.area.some((area) => area.slug === params.city)
+      );
+      // console.log('filteredAndSortedPosts:', filteredAndSortedPosts);
+
+
+      //　総ページ数を取得
+      const totalPages = Math.ceil(filterPathData.length / 8);
+      //console.log('totalPages', totalPages);
+
+
+      //現在のページのparentNameを取り出す
+      // const cityName = updatedPostsDataB
+      //   .filter((post) => post.area[0].slug === params.city)
+      //   .map((post) => post.area[0].name);
+      //console.log('cityName:', cityName);
 
 
       return {
         props: {
           allPostsData,
-          city,
           area,
-          totalPages: Math.ceil(allPostsData.filter(post => post.acf.address.address_city === city).length / 8),
+          city,
+          cityName,
+          totalPages,
+          updatedPostsDataB,
+          filterPathData,
         },
       };
     } catch (error) {
@@ -118,9 +158,12 @@ export async function getStaticProps({ params }) {
       return {
         props: {
           allPostsData: [],
-          city: [],
           area: [],
+          city: [],
+          cityName: [],
           totalPages: 0,
+          updatedPostsDataB: [],
+          filterPathData: [],
         },
       };
     }
@@ -133,21 +176,34 @@ export async function getStaticPaths() {
     try {
 
       // getAllPostsData関数を呼ぶ
-      const allPostsDataA = await getAllPostsData();
+      const allPostsData = await getAllPostsData();
+      //console.log('allPostsData', allPostsData);
+
+      const getAllPostsSlugDataB = await getAllPostsSlugData();
+      //console.log('getAllPostsSlugDataB', getAllPostsSlugDataB);
+
+      // updatedPostsData関数を呼ぶ
+      const updatedPostsDataB = await updatedPostsData(allPostsData, getAllPostsSlugDataB);
+      //console.log('updatedPostsData', updatedPostsDataB);
+
 
       //動的ルーティングpath実装
-      const paths = allPostsDataA.flatMap((post) => {
-        const totalPages = Math.ceil(allPostsDataA.filter(item => item.acf.address.address_city === post.acf.address.address_city).length / 8);
-        return Array.from({ length: totalPages }, (_, index) => ({
+      // getStaticPathsに必要なパスの情報を組み立て
+      const paths = updatedPostsDataB.map((post) => {
+        const areaSlug = post.area[0].parentSlug;
+        const citySlug = post.area[0].slug;
+        const titleSlug = post.id.toString();
+
+        return {
           params: {
-            area: post.acf.address.address_prefecture.toString(),
-            city: post.acf.address.address_city.toString(),
-            page: (index + 1).toString(), // ページ番号を指定 ⭐pageはいらないかも
+            area: areaSlug,
+            city: citySlug,
+            facillityId: titleSlug,
           },
-        }));
+        };
       });
 
-      //console.log(paths);
+      console.log('paths:', paths);
       //console.log(totalPages);
 
       return {

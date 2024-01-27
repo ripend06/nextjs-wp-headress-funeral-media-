@@ -7,9 +7,14 @@ import Link from 'next/link';
 // import Top from './componetns/Top';
 import { getAllPostsData } from '@/libs/place/getAllPostsPlaceData';
 import { getPrefecturePost } from '@/libs/place/getPrefecturePost';
+import { getAllPostsSlugData } from '@/libs/place/getAllPostsSlugData';
+import { updatedPostsData } from '@/libs/place/updatedPostsData';
 
 
-export default function Place( {prefecturePostsData, prefectureTokyoPostsData} ) {
+export default function Place( {updatedPrefecturePostsData, updatedPrefectureLimitPostsData} ) {
+
+  console.log('updatedPrefectureLimitPostsData', updatedPrefectureLimitPostsData);
+
 
   return (
     <>
@@ -20,12 +25,12 @@ export default function Place( {prefecturePostsData, prefectureTokyoPostsData} )
             <h3>葬儀場一覧</h3>
             <h3>東京都の市区町村から探す</h3>
             <div className="homeCity">
-            {prefectureTokyoPostsData
-            .filter((post, index, self) => self.findIndex(p => p.acf.address.address_city === post.acf.address.address_city) === index)
+            {updatedPrefecturePostsData
+            .filter((post, index, self) => self.findIndex(p => p.area[0].slug === post.area[0].slug) === index)
             .map(post => (
               <div key={post.id}>
-                <Link href={`/place/${post.acf.address.address_prefecture}/${post.acf.address.address_city}`}>
-                  {post.acf.address.address_city}
+                <Link href={`/place/${post.area[0].parentSlug}/${post.area[0].slug}`}>
+                  {post.area[0].name}
                 </Link>
               </div>
             ))}
@@ -33,8 +38,8 @@ export default function Place( {prefecturePostsData, prefectureTokyoPostsData} )
 
 
             <h3>東京都の葬儀場情報</h3>
-            {prefecturePostsData.map((post) => (
-            <Link href={`place/${post.acf.address.address_prefecture}/${post.acf.address.address_city}/${post.title.rendered}`} className={styles.homePlace} key={post.id}>
+            {updatedPrefectureLimitPostsData.map((post) => (
+            <Link href={`/place/${post.area[0].parentSlug}/${post.area[0].slug}/${post.id}`} className={styles.homePlace} key={post.id}>
                 {post._embedded['wp:featuredmedia'] && (
                 <div>
                     {post._embedded['wp:featuredmedia'].map((featuredmedia) => (
@@ -71,16 +76,30 @@ export default function Place( {prefecturePostsData, prefectureTokyoPostsData} )
 export async function getStaticProps() {
   try {
     // getPrefecturePost関数呼び出し
-    const prefecturePostsData = await getPrefecturePost(98,4);
+    const prefectureTokyoLimitPostsData = await getPrefecturePost(98,4);
+
+    // getAllPostsSlugData関数を呼ぶ
+    const getAllPostsSlugDataB = await getAllPostsSlugData();
+    //console.log('getAllPostsSlugDataB', getAllPostsSlugDataB);
+
+    // updatedAllPostsData関数を呼ぶ
+    const updatedPrefectureLimitPostsData = await updatedPostsData(prefectureTokyoLimitPostsData, getAllPostsSlugDataB);
+    //console.log('updatedPrefectureLimitPostsData', updatedPrefectureLimitPostsData);
+
+
 
     // getAllPostsData関数を呼び出し area98=東京都でソート
     const prefectureTokyoPostsData = await getAllPostsData(98);
-    console.log('prefectureTokyoPostsData', prefectureTokyoPostsData);
+    //console.log('prefectureTokyoPostsData', prefectureTokyoPostsData);
+
+    // updatedAllPostsData関数を呼ぶ
+    const updatedPrefecturePostsData = await updatedPostsData(prefectureTokyoPostsData, getAllPostsSlugDataB);
+    //console.log('updatedPrefectureLimitPostsData', updatedPrefectureLimitPostsData);
 
     return {
       props: {
-        prefecturePostsData,
-        prefectureTokyoPostsData,
+        updatedPrefecturePostsData,
+        updatedPrefectureLimitPostsData,
       },
     };
   } catch (error) {
@@ -88,8 +107,8 @@ export async function getStaticProps() {
 
     return {
       props: {
-        prefecturePostsData: [],
-        prefectureTokyoPostsData: [],
+        updatedPrefecturePostsData: [],
+        updatedPrefectureLimitPostsData: [],
       },
     };
   }
