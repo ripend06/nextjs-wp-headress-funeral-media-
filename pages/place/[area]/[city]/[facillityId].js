@@ -8,11 +8,13 @@ import { updatedPostsData } from '@/libs/place/updatedPostsData';
 
 
 //施設情報ページ
-function FacillityName({ filteredPosts, city, area, facillityName, mediaData, nearbyPostsData, facillityId }) {
+function FacillityName({ filteredPosts, city, area, facillityName, areaName, cityName, mediaData, nearbyPostsData, facillityId }) {
 
     //console.log('mediaData', mediaData);
     console.log('filteredPosts', filteredPosts);
     console.log('facillityId', facillityId);
+    console.log('areaName', areaName);
+    console.log('cityName', cityName);
 
     return (
         <>
@@ -23,11 +25,11 @@ function FacillityName({ filteredPosts, city, area, facillityName, mediaData, ne
             {">"}
             <Link href={`/place/`}>葬儀一覧</Link>
             {">"}
-            <Link href={`/place/${area}`}>{area}</Link>
+            <Link href={`/place/${area}`}>{areaName}</Link>
             {">"}
-            <Link href={`/place/${area}/${city}`}>{city}</Link>
+            <Link href={`/place/${area}/${city}`}>{cityName}</Link>
             {">"}
-            <Link href={`/place/${area}/${city}/${facillityName}`}>{facillityName}</Link>
+            <Link href={`/place/${area}/${city}/${facillityId}`}>{facillityName}</Link>
         の葬儀場情報</h3>
         <div class="mediaDatass">
         {mediaData.flat().map((post) => (
@@ -164,12 +166,16 @@ export async function getStaticProps({ params }) {
         const nearbyPostsData = await getNearbyPosts(updatedPostsDataB, city, area);
 
 
-        // const facillityName = filteredPosts.map((post) => {
-        //     return post.title.rendered;
-        // });
-        // const parentName = filteredPosts.map((post) => {
-        //     return post.area[0].parentName;
-        // });
+        //パンくず名を取得
+        const facillityName = filteredPosts.map((post) => {
+            return post.title.rendered;
+        });
+        const areaName = filteredPosts.map((post) => {
+            return post.area[0].parentName;
+        });
+        const cityName = filteredPosts.map((post) => {
+            return post.area[0].name;
+        });
 
 
 
@@ -178,7 +184,9 @@ export async function getStaticProps({ params }) {
             props: {
             filteredPosts,
             nearbyPostsData,
-            //facillityName,
+            facillityName,
+            areaName,
+            cityName,
             facillityId,
             city,
             area,
@@ -195,7 +203,9 @@ export async function getStaticProps({ params }) {
                 nearbyPostsData: [],
                 city: [],
                 area: [],
-                //facillityName: [],
+                facillityName: [],
+                areaName: [],
+                cityName: [],
                 facillityId: [],
                 mediaData: [],
             //   totalPages: 0,

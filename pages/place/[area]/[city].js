@@ -8,12 +8,13 @@ import { updatedPostsData } from '@/libs/place/updatedPostsData';
 
 
 //都道府県別ソートページ
-function Area({ allPostsData, area, city, totalPages, filterPathData, updatedPostsDataB, cityName }) {
+function Area({ allPostsData, area, city, totalPages, filterPathData, updatedPostsDataB, cityName, areaName }) {
 
   console.log('totalPages', totalPages);
   console.log('updatedPostsDataB', updatedPostsDataB);
   console.log('filterPathData', filterPathData);
   console.log('cityName', cityName);
+  console.log('areaName', areaName);
   //console.log('allPostsData', allPostsData);
 
     //ページネーション番号付与Placeデータ
@@ -57,7 +58,7 @@ function Area({ allPostsData, area, city, totalPages, filterPathData, updatedPos
 
             areaPage
             <h3>
-            <Link href={`/place/${area}`}>{area}{city}</Link>
+            <Link href={`/place/${area}`}>{areaName}{cityName}</Link>
             の葬儀場情報</h3>
             <h3>{pageValue}/{totalPages}ページ目</h3>
             {displayedPosts.map((post) => (
@@ -134,10 +135,16 @@ export async function getStaticProps({ params }) {
       //console.log('totalPages', totalPages);
 
 
+      //現在のページのnameを取り出す
+      const cityName = updatedPostsDataB
+        .filter((post) => post.area[0].slug === params.city)
+        .map((post) => post.area[0].name)[0];
+      //console.log('cityName:', cityName);
+
       //現在のページのparentNameを取り出す
-      // const cityName = updatedPostsDataB
-      //   .filter((post) => post.area[0].slug === params.city)
-      //   .map((post) => post.area[0].name);
+      const areaName = updatedPostsDataB
+        .filter((post) => post.area[0].parentSlug === params.area)
+        .map((post) => post.area[0].parentName)[0];
       //console.log('cityName:', cityName);
 
 
@@ -147,6 +154,7 @@ export async function getStaticProps({ params }) {
           area,
           city,
           cityName,
+          areaName,
           totalPages,
           updatedPostsDataB,
           filterPathData,
@@ -161,6 +169,7 @@ export async function getStaticProps({ params }) {
           area: [],
           city: [],
           cityName: [],
+          areaName: [],
           totalPages: 0,
           updatedPostsDataB: [],
           filterPathData: [],
