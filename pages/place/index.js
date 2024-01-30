@@ -9,6 +9,7 @@ import { getAllPostsData } from '@/libs/place/getAllPostsPlaceData';
 import { getPrefecturePost } from '@/libs/place/getPrefecturePost';
 import { getAllPostsSlugData } from '@/libs/place/getAllPostsSlugData';
 import { updatedPostsData } from '@/libs/place/updatedPostsData';
+import FuneralMap from '@/libs/googleMap/GoogleMap';
 
 
 export default function Place( {updatedPrefecturePostsData, updatedPrefectureLimitPostsData} ) {
@@ -35,6 +36,8 @@ export default function Place( {updatedPrefecturePostsData, updatedPrefectureLim
               </div>
             ))}
             </div>
+
+            <FuneralMap />
 
 
             <h3>東京都の葬儀場情報</h3>
@@ -67,6 +70,7 @@ export default function Place( {updatedPrefecturePostsData, updatedPrefectureLim
             </Link>
             ))}
 
+
         </>
   )
 }
@@ -95,6 +99,18 @@ export async function getStaticProps() {
     // updatedAllPostsData関数を呼ぶ
     const updatedPrefecturePostsData = await updatedPostsData(prefectureTokyoPostsData, getAllPostsSlugDataB);
     //console.log('updatedPrefectureLimitPostsData', updatedPrefectureLimitPostsData);
+
+
+
+
+
+
+
+
+
+
+
+
 
     return {
       props: {

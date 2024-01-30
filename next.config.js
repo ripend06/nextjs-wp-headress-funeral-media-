@@ -8,6 +8,9 @@ const nextConfig = {
   //   ['@next/plugin-serverless'],
   //   // 他のプラグインがあればここに追加
   // ],
+  env: {
+    GOOGLE_MAPS_API_KEY: 'AIzaSyA6nerYNTNJUWNq4GdApIqY_y8o9vcdqZ0',
+  },
 
 }
 
