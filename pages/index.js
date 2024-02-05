@@ -9,9 +9,10 @@ import { getAllPostsData } from '@/libs/place/getAllPostsPlaceData';
 import { getPrefecturePost } from '@/libs/place/getPrefecturePost';
 import { getAllPostsSlugData } from '@/libs/place/getAllPostsSlugData';
 import { updatedPostsData } from '@/libs/place/updatedPostsData';
+import FuneralMap from './componetns/googleMap/GoogleMap';
 
 
-export default function Place( {updatedPrefecturePostsData, updatedPrefectureLimitPostsData} ) {
+export default function Place( {updatedPrefecturePostsData, updatedPrefectureLimitPostsData, updatedAllPostsDataB} ) {
 
   console.log('updatedPrefectureLimitPostsData', updatedPrefectureLimitPostsData);
 
@@ -36,6 +37,8 @@ export default function Place( {updatedPrefecturePostsData, updatedPrefectureLim
             ))}
             </div>
 
+            <h3>地図</h3>
+            <FuneralMap updatedMapPostsData={updatedAllPostsDataB}/>
 
             <h3>東京都の葬儀場情報</h3>
             {updatedPrefectureLimitPostsData.map((post) => (
@@ -96,10 +99,17 @@ export async function getStaticProps() {
     const updatedPrefecturePostsData = await updatedPostsData(prefectureTokyoPostsData, getAllPostsSlugDataB);
     //console.log('updatedPrefectureLimitPostsData', updatedPrefectureLimitPostsData);
 
+
+    //GoogleMap.jsに渡すデータ
+    // updatedAllPostsData関数を呼ぶ
+    const updatedAllPostsDataB = await updatedPostsData(getAllPostsSlugDataB, getAllPostsSlugDataB);
+    //console.log('updatedPrefectureLimitPostsData', updatedPrefectureLimitPostsData);
+
     return {
       props: {
         updatedPrefecturePostsData,
         updatedPrefectureLimitPostsData,
+        updatedAllPostsDataB,
       },
     };
   } catch (error) {
@@ -109,6 +119,7 @@ export async function getStaticProps() {
       props: {
         updatedPrefecturePostsData: [],
         updatedPrefectureLimitPostsData: [],
+        updatedAllPostsDataB: [],
       },
     };
   }

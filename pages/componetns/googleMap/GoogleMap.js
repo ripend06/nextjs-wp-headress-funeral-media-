@@ -1,4 +1,3 @@
-//バツ押したら全部閉じちゃう　直したい
 //GoogleMapコンポーネント
 
 import React, { useEffect, useState } from 'react';

@@ -5,6 +5,7 @@ import { getAllPostsData } from '@/libs/place/getAllPostsPlaceData';
 import { getAllPostsSlugData } from '@/libs/place/getAllPostsSlugData';
 import { filteredPostsPath } from '@/libs/place/filteredPostsPath';
 import { updatedPostsData } from '@/libs/place/updatedPostsData';
+import FuneralMap from '../componetns/googleMap/GoogleMap';
 
 
 //都道府県別ソートページ
@@ -61,6 +62,10 @@ function Area({ allPostsData, area, city, totalPages, filterPathData, updatedPos
             <Link href={`/place/${area}`}>{areaName}</Link>
             の葬儀場情報</h3>
             <h3>{pageValue}/{totalPages}ページ目</h3>
+
+            <h3>地図</h3>
+            <FuneralMap updatedMapPostsData={filterPathData}/>
+
             {displayedPosts.map((post) => (
             <Link href={`/place/${post.area[0].parentSlug}/${post.area[0].slug}/${post.id}`} className={styles.homePlace} key={post.id}>
                 {post._embedded && post._embedded['wp:featuredmedia'] && (
