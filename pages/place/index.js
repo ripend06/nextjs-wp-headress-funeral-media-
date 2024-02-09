@@ -14,7 +14,7 @@ import FuneralMap from '@/pages/componetns/googleMap/GoogleMap';
 
 export default function Place( {updatedPrefecturePostsData, updatedPrefectureLimitPostsData, updatedAllPostsDataB} ) {
 
-  console.log('updatedPrefectureLimitPostsData', updatedPrefectureLimitPostsData);
+  //console.log('updatedPrefectureLimitPostsData', updatedPrefectureLimitPostsData);
   //console.log('updatedAllPostsDataB', updatedAllPostsDataB);
 
 

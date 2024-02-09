@@ -11,7 +11,7 @@ export async function updatedPostsData(beforeUpdatePostsData, getAllPostsSlugDat
       //parentSlug: getParentSlug(post.parent, getAllPostsSlugData),
     }));
 
-    console.log('postIdSlug', postIdSlug);
+    //console.log('postIdSlug', postIdSlug);
 
     // idとslug情報を入れて、allPostsDataを更新する
     const updatedPostsData = beforeUpdatePostsData.map((post) => {
@@ -34,7 +34,7 @@ export async function updatedPostsData(beforeUpdatePostsData, getAllPostsSlugDat
 
     //console.log('updatedPostsData', updatedPostsData);
     const areaData = updatedPostsData.map((post) => (post.area));
-    console.log('areaData', areaData);
+    //console.log('areaData', areaData);
 
     return updatedPostsData;
   }

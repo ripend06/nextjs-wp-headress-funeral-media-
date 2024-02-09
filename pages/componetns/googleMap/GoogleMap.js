@@ -1,6 +1,6 @@
 //GoogleMapコンポーネント
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import { useJsApiLoader } from '@react-google-maps/api';
 
@@ -21,9 +21,10 @@ function FuneralMap ({ updatedMapPostsData }) {
   };
 
 
-    // markerData配列データを作成
-    const markerData = [
-      ...updatedMapPostsData.map((post) => {
+    // markerData配列データを作成。マーカーデータの初期化を useMemo で行う
+    const markerData = useMemo(() => {
+      if (updatedMapPostsData) {
+        return updatedMapPostsData.map((post) => {
             const featuredMedia = post._embedded && post._embedded['wp:featuredmedia']; //post._embedded が存在し、かつその中に wp:featuredmedia プロパティが存在すれば、その値を featuredMedia に格納する
 
             return {
@@ -34,10 +35,12 @@ function FuneralMap ({ updatedMapPostsData }) {
                 detail: post.acf.feature_text,
                 image: featuredMedia ? (featuredMedia[0] ? featuredMedia[0].source_url : null) : null, //三項演算子。featuredMediaが存在し、featuredMedia[0]が存在したら、featuredMedia[0].source_urlを取得
             };
-        }),
-    ];
+          });
+        }
+        return []; // updatedMapPostsData が null の場合は空の配列を返す
+      }, [updatedMapPostsData]);
 
-  console.log('markerData', markerData);
+  //console.log('markerData', markerData);
 
 
   const [map, setMap] = useState(null); //mapの状態管理
@@ -77,7 +80,7 @@ function FuneralMap ({ updatedMapPostsData }) {
         geocodeAddress(location, i);
       });
     }
-  }, [isLoaded, map]);
+  }, [isLoaded, map, markerData]);
 
   // 住所をジオコーディングして、マーカーを設定する関数
   const geocodeAddress = (location, i) => {

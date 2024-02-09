@@ -11,11 +11,11 @@ import FuneralMap from '@/pages/componetns/googleMap/GoogleMap';
 //都道府県別ソートページ
 function Area({ allPostsData, area, city, totalPages, filterPathData, updatedPostsDataB, cityName, areaName }) {
 
-  console.log('totalPages', totalPages);
-  console.log('updatedPostsDataB', updatedPostsDataB);
-  console.log('filterPathData', filterPathData);
-  console.log('cityName', cityName);
-  console.log('areaName', areaName);
+  // console.log('totalPages', totalPages);
+  // console.log('updatedPostsDataB', updatedPostsDataB);
+  // console.log('filterPathData', filterPathData);
+  // console.log('cityName', cityName);
+  // console.log('areaName', areaName);
   //console.log('allPostsData', allPostsData);
 
     //ページネーション番号付与Placeデータ
@@ -40,7 +40,7 @@ function Area({ allPostsData, area, city, totalPages, filterPathData, updatedPos
     const pageValueUrl = paramsURL.get('page');
 
     const pageValue = pageValueUrl || '1';
-    console.log('pageValue', pageValue);
+    //console.log('pageValue', pageValue);
 
 
     //URLのページ番号に対応するPlaceデータをソート
@@ -51,7 +51,7 @@ function Area({ allPostsData, area, city, totalPages, filterPathData, updatedPos
       //.filter(post => post.acf.address.address_prefecture === area)
       .slice(startIdx, endIdx);
 
-    console.log('Display posts:',displayedPosts);
+    //console.log('Display posts:',displayedPosts);
 
 
     return (
@@ -112,7 +112,7 @@ export async function getStaticProps({ params }) {
     try {
       const city = params.city;
       const area = params.area;
-      console.log('params', params);
+      //console.log('params', params);
 
       // getAllPostsData関数を呼ぶ
       const allPostsData = await getAllPostsData();
@@ -217,7 +217,7 @@ export async function getStaticPaths() {
         };
       });
 
-      console.log('paths:', paths);
+      //console.log('paths:', paths);
       //console.log(totalPages);
 
       return {

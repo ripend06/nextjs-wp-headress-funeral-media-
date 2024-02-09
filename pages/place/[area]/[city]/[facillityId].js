@@ -11,10 +11,10 @@ import { updatedPostsData } from '@/libs/place/updatedPostsData';
 function FacillityName({ filteredPosts, city, area, facillityName, areaName, cityName, mediaData, nearbyPostsData, facillityId }) {
 
     //console.log('mediaData', mediaData);
-    console.log('filteredPosts', filteredPosts);
-    console.log('facillityId', facillityId);
-    console.log('areaName', areaName);
-    console.log('cityName', cityName);
+    // console.log('filteredPosts', filteredPosts);
+    // console.log('facillityId', facillityId);
+    // console.log('areaName', areaName);
+    // console.log('cityName', cityName);
 
     return (
         <>
@@ -138,7 +138,7 @@ export async function getStaticProps({ params }) {
         const city = params.city;
         const area = params.area;
         const facillityId = params.facillityId;
-        console.log('facillityId:', facillityId)
+        //console.log('facillityId:', facillityId)
 
         // getAllPostsData関数を呼ぶ
         const allPostsData = await getAllPostsData();
@@ -247,7 +247,7 @@ export async function getStaticPaths() {
         };
       });
 
-      console.log('paths:', paths);
+      //console.log('paths:', paths);
       //console.log(totalPages);
 
       return {

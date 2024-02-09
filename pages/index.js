@@ -14,7 +14,7 @@ import FuneralMap from './componetns/googleMap/GoogleMap';
 
 export default function Place( {updatedPrefecturePostsData, updatedPrefectureLimitPostsData, updatedAllPostsDataB} ) {
 
-  console.log('updatedPrefectureLimitPostsData', updatedPrefectureLimitPostsData);
+  //console.log('updatedPrefectureLimitPostsData', updatedPrefectureLimitPostsData);
 
 
   return (
@@ -101,8 +101,11 @@ export async function getStaticProps() {
 
 
     //GoogleMap.jsに渡すデータ
+    // getPrefecturePost関数呼び出し
+    const allPostsDataC = await getAllPostsData();
+
     // updatedAllPostsData関数を呼ぶ
-    const updatedAllPostsDataB = await updatedPostsData(getAllPostsSlugDataB, getAllPostsSlugDataB);
+    const updatedAllPostsDataB = await updatedPostsData(allPostsDataC, getAllPostsSlugDataB);
     //console.log('updatedPrefectureLimitPostsData', updatedPrefectureLimitPostsData);
 
     return {
