@@ -11,7 +11,7 @@ export async function getAllPostsSlugData(filterArea) {
   while (true) {
     try {
       // REST APIへのリクエスト
-      const apiUrl = `http://funeralmedia.local/wp-json/wp/v2/area?_embed&per_page=1&page=${currentPage}`;
+      const apiUrl = `https://kansha-ososhiki.com/wp-json/wp/v2/area?_embed&per_page=1&page=${currentPage}`;
 
       // areaが指定されている場合のみ、クエリに追加
       const urlWithArea = filterArea ? `${apiUrl}&area=${filterArea}` : apiUrl;

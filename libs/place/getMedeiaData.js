@@ -6,7 +6,7 @@ export async function getMediaData(filteredPosts) {
   
         // 各非空のメディアIDに対してfetchを行う
         const mediaPromises = nonEmptyValues.map(async (mediaId) => {
-            const mediaRes = await fetch(`http://funeralmedia.local/wp-json/wp/v2/media/${mediaId}?_fields=guid,id`);
+            const mediaRes = await fetch(`https://kansha-ososhiki.com/wp-json/wp/v2/media/${mediaId}?_fields=guid,id`);
             return mediaRes.json();
         });
   
