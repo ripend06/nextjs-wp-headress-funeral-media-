@@ -65,3 +65,10 @@ array( 'hierarchical' => true,
 );
 }
 ```
+##　デプロイについて
+・WPRESTAPI　Onにする
+    ・https://github.com/asucreation/funeral-media/commit/9eb3cd2fc59a88300382fd228459fbadb67cec6d
+・ACFも　Onにする
+    ・ACFプラグイン管理画面より
+・XserverのRESTAPI制限　Offにする
+　　・Xserver管理画面より
