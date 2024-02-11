@@ -1,0 +1,110 @@
+/* 追従要素の初期スタイル */
+#floating {
+    position: relative;
+    transition: top 0.3s ease-out;
+    transform: translateY(100%); /* 追加: 下に移動して非表示にする */
+}
+
+/* スクロール時に追従させるスタイル */
+#floating.fixed {
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+/* 下からふわっと表示させるアニメーション */
+#floating.fadeIn {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.floating {
+    box-shadow: 0 -4px 4px $black10;
+    background-color: $white100;
+    .discount {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0 0.25rem;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid $black10;
+    }
+    .text1 {
+        color: $black100;
+        font-size: 0.6875rem;
+        font-weight: $normal;
+    }
+    .text2 {
+        color: $red60;
+        font-size: 0.6875rem;
+        font-weight: $medium;
+    }
+    .floatingMenu__ul {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+    }
+    .floatingMenu__li {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        .floatingMenu__text {
+            color: $black100;
+            font-size: 0.6875rem;
+            font-weight: $bold;
+        }
+    }
+    .floatingMenu__li1 {
+        border-right: 1px solid $black10;
+        .floatingMenu__icon {
+            @include icon_l($black80);
+        }
+    }
+    .floatingMenu__li2 {
+        border-right: 1px solid $black10;
+        .floatingMenu__icon {
+            width: 1.125rem;
+        }
+    }
+    .floatingMenu__li3 {
+        .floatingMenu__icon {
+            width: 4.0625rem;
+        }
+    }
+    .floatingMenu__li4 {
+        background-color: $red60;
+        .floatingMenu__icon {
+            @include icon_l($white100);
+        }
+        .floatingMenu__text {
+            color: $white100;
+        }
+    }
+    .floatingMenu__menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.25rem 0;
+        padding: 0.5rem 0 1rem;
+    }
+    .floatingMenu__link {
+        display: block;
+        width: 100%;
+    }
+}

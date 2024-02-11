@@ -10,8 +10,8 @@ function FuneralMap ({ updatedMapPostsData }) {
 
   //Mapサイズ
   const mapStyles = {
-    height: '800px',
-    width: '80%',
+    height: '100%',
+    width: '100%',
   };
 
   //Map初期位置 経緯度
@@ -116,7 +116,7 @@ function FuneralMap ({ updatedMapPostsData }) {
 
   return (
     <>
-        <h3>地図</h3>
+        {/* <h3>地図</h3> */}
         <LoadScript googleMapsApiKey={process.env.GOOGLE_MAPS_API_KEY}>
         <GoogleMap mapContainerStyle={mapStyles} center={defaultCenter} zoom={12} onLoad={onLoad}>
             {/* マーカーを表示 */}

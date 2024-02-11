@@ -1,0 +1,392 @@
+#pagePlanDetails {
+    .head {
+        margin-top: 10.125rem;
+        margin-bottom: 1rem;
+        @include pc {
+            margin-top: 4.125rem;
+        } 
+        @include sp-lg {
+            margin-top: 4.125rem;
+        }
+    }
+    .ohanashiki {
+        .planDetailMv {
+            &__bar {
+                background-color: $pink40;
+            }
+            &__main {
+                background-color: $pink05;
+            }
+            &__days {
+                background-color: $pink40;
+            }
+            &__planName {
+                color: $pink70;
+            }
+            &__priceWrap {
+                color: $pink70;
+                border-bottom: 1px dotted $pink70;
+            }
+        }
+    }
+    .kasoshiki  {
+        .planDetailMv{
+            &__bar {
+                background-color: $green60;
+            }
+            &__main {
+                background-color: $green05;
+            }
+            &__days {
+                background-color: $green60;
+            }
+            &__planName {
+                color: $green80;
+            }
+            &__priceWrap {
+                color: $green80;
+                border-bottom: 1px dotted $green80;
+            }
+        }
+    }
+    .kazokuso {
+        .planDetailMv {
+            &__bar {
+                background-color: $purple50;
+            }
+            &__main {
+                background-color: $purple05;
+            }
+            &__days {
+                background-color: $purple50;
+            }
+            &__planName {
+                color: $purple70;
+            }
+            &__priceWrap {
+                color: $purple70;
+                border-bottom: 1px dotted $purple70;
+            }
+        }
+    }
+    .simpleso {
+        .planDetailMv {
+            &__bar {
+                background-color: $blue40;
+            }
+            &__main {
+                background-color: $blue05;
+            }
+            &__days {
+                background-color: $blue40;
+            }
+            &__planName {
+                color: $blue70;
+            }
+            &__priceWrap {
+                color: $blue70;
+                border-bottom: 1px dotted $blue70;
+            }
+        }
+    }
+    .ippanso {
+        .planDetailMv {
+            &__bar {
+                background-color: $orange40;
+            }
+            &__main {
+                background-color: $orange05;
+            }
+            &__days {
+                background-color: $orange40;
+            }
+            &__planName {
+                color: $orange80;
+            }
+            &__priceWrap {
+                color: $orange80;
+                border-bottom: 1px dotted $orange80;
+            }
+        }
+    }
+    .barairoso {
+        .planDetailMv {
+            &__bar {
+                background-color: $red50;
+            }
+            &__main {
+                background-color: $red05;
+            }
+            &__days {
+                background-color: $red50;
+            }
+            &__planName {
+                color: $red80;
+            }
+            &__priceWrap {
+                color: $red80;
+                border-bottom: 1px dotted $red80;
+            }
+        }
+    }
+    .ichinichiso {
+        .planDetailMv {
+            &__bar {
+                background-color: $yellow70;
+            }
+            &__main {
+                background-color: $yellow05;
+            }
+            &__days {
+                background-color: $yellow70;
+            }
+            &__planName {
+                color: $yellow90;
+            }
+            &__priceWrap {
+                color: $yellow90;
+                border-bottom: 1px dotted $yellow90;
+            }
+        }
+    }
+    .about {
+        padding: 3.5rem 0;
+        @include sp-lg {
+            padding: 2rem 0;
+        }
+        .container {
+            width: 100%;
+        }
+        &__head {
+            margin-bottom: 2rem;
+        }
+        &__title {
+            color: $pink70;
+            position: relative;
+            margin-bottom: 2.5rem;
+            &::after {
+                content: "";
+                background-color: $pink70;
+                width: 3.5rem;
+                height: 0.25rem;
+                position: absolute;
+                bottom: -1rem;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+        .content {
+            & + .content {
+                margin-top: $space-10;
+            }
+        }
+        .headingWrap--h3Underline {
+            margin-bottom: 1rem;
+        }
+        .content1 {
+            &__listWrap {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 0.5rem 1.5rem;
+                @include sp-lg {
+                    flex-direction: column;
+                }
+            }
+            &__list {
+                background-color: $black5;
+                padding: 0 2rem;
+                height: 12.5rem;
+                width: 33%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                @include sp-lg {
+                    width: 100%;
+                }
+            }
+
+        }
+        .content2 {
+            &__sup {
+                margin-top: 0.5rem;
+            }
+        }
+        .content3 {
+            .staffComment--2 {
+                margin-bottom: 1rem;
+            }
+            &__inner {
+                flex-wrap: nowrap;
+                & + .content3__inner {
+                    margin-top: 1rem;
+                }
+                @include sp-lg {
+                    padding: 1rem 1rem;
+                }
+                .h4--sm {
+                    margin-bottom: 0.5rem;
+                }
+            }
+        }
+    }
+    .includedService, .optionService {
+        margin-bottom: 3.5rem;
+        .headingWrap--h3Underline {
+            margin-bottom: 1rem;
+        }
+        .planItemGroup {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            @include sp-lg {
+                gap: 0.5rem;
+            }
+        }
+        &__sup {
+          .iconText + .iconText {
+            margin-left: 1.5rem;
+          }
+        }
+    }
+    .compare {
+        margin-bottom: 3.5rem;
+        .headingWrap--h3Underline {
+            margin-bottom: 1rem;
+        }
+        &__main {
+            display: flex;
+            justify-content: space-between;
+            gap: 0 1rem;
+            margin-bottom: 1rem;
+            @include sp-lg {
+                overflow-x: scroll;
+            }
+        }
+        &__tableWrap {
+            width: 50%;
+            @include sp-lg {
+                width: 80%;
+            }
+        }
+        &__tableTitle {
+            padding: 0.5rem 1rem;
+            border-top: 1px solid $black10;
+            border-right: 1px solid $black10;
+            border-left: 1px solid $black10;
+            &.ohanashiki {
+                .h4--default {
+                    color: $pink70;
+                }
+            }
+            &.kasoshiki {
+                .h4--default {
+                    color: $green80;
+                }
+            }
+            &.kazokuso {
+                .h4--default {
+                    color: $purple70;
+                }
+            }
+            &.simpleso {
+                .h4--default {
+                    color: $blue70;
+                }
+            }
+            &.ippanso {
+                .h4--default {
+                    color: $orange80;
+                }
+            }
+            &.barairoso {
+                .h4--default {
+                    color: $red80;
+                }
+            }
+            &.ichinichiso {
+                .h4--default {
+                    color: $yellow90;
+                }
+            }
+        }
+        .tagWrap {
+            display: flex;
+            align-items: center;
+            gap: 0 0.25rem;
+        }
+        .tag {
+            min-height: 7.125rem;
+        }
+        .tagArrow {
+            width: 1rem;
+            height: 0.5rem;
+        }
+        .table2--col1__tr {
+            @include sp-lg {
+                flex-direction: row;
+            }
+        }
+        .table2--col1__th {
+            white-space: normal;
+            width: 22%;
+        }
+        .table2--col1__td {
+            width: 78%;
+        }
+    }
+    .flow {
+        padding-top: 3.5rem;
+        margin-bottom: 3.5rem;
+        .headingWrap--h3Underline {
+            margin-bottom: 1rem;
+        }
+        .h4--default {
+            @include sp-lg {
+                font-size: $text-18;
+
+            }
+        }
+    }
+    .toSimulator {
+        margin-bottom: 3.5rem;
+        .bgImgBlock {
+            background-image: url('https://kansha-ososhiki.com/wp-content/uploads/2023/09/toSimulator.png');
+        }
+    }
+    .searchPlace {
+        padding-top: 3.5rem;
+        margin-bottom: 3.5rem;
+        .h2--default {
+            margin-bottom: 1.5rem;
+        }
+        .headingWrap--h3Underline {
+            margin-bottom: 2rem;
+        }
+    }
+    .toHowto {
+        margin-bottom: 3.5rem;
+        .bgImgBlock {
+            background-image: url('https://kansha-ososhiki.com/wp-content/uploads/2023/09/toHowto.png');
+        }
+    }
+    .modal {
+        .table2--col1__tr {
+            display: table-row;
+        }
+        .table2--col1__th {
+            width: 24%;
+            text-align: left;
+        }
+        .table2--col1__td {
+            width: 38%;
+        }
+        .cta--m {
+            padding: 1.5rem 2rem;
+            @include sp-lg {
+                padding: 1.5rem 1rem;
+            }
+        }
+    }
+}

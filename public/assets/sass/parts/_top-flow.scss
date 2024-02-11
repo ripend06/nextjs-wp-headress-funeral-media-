@@ -1,0 +1,12 @@
+#topFlow {
+    padding: 48px 0;
+    .topFlow {
+        &__titleWrap {
+            margin-bottom: $space-24;
+            text-align: center;
+        }
+        &__title {
+            margin-bottom: $space-4;
+        }
+    }
+}

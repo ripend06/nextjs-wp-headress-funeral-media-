@@ -1,0 +1,214 @@
+/*==========================*/
+/****** ブレイクポイント ******/
+/*==========================*/
+// ブレイクポイントを指定
+$pc: 1100px;
+$tab: 960px;
+$sp-lg: 768px;
+$sp-md: 480px;
+$sp-sm: 360px;
+@mixin pc {
+  @media screen and (max-width: ($pc)) {
+    @content;
+  }
+}
+@mixin tab {
+  @media screen and (max-width: ($tab)) {
+    @content;
+  }
+}
+@mixin sp-lg {
+  @media screen and (max-width: ($sp-lg)) {
+    @content;
+  }
+}
+@mixin sp-md {
+  @media screen and (max-width: ($sp-md)) {
+    @content;
+  }
+}
+@mixin sp-sm {
+  @media screen and (max-width: ($sp-sm)) {
+    @content;
+  }
+}
+/*==========================*/
+/********* カラー変数 *********/
+/*==========================*/
+//ブラック
+$black100 : rgba(#312F2F, 1);
+$black90 : rgba(#312F2F, 0.9);
+$black80 : rgba(#312F2F, 0.8);
+$black70 : rgba(#312F2F, 0.7);
+$black60 : rgba(#312F2F, 0.6);
+$black50 : rgba(#312F2F, 0.5);
+$black40 : rgba(#312F2F, 0.4);
+$black30 : rgba(#312F2F, 0.3);
+$black20 : rgba(#312F2F, 0.2);
+$black10 : rgba(#312F2F, 0.1);
+$black5 : rgba(#312F2F, 0.05);
+//ホワイト
+$white100: rgba(#FFFFFF, 1);
+$white80: rgba(#FFFFFF, 0.8);
+$white40: rgba(#FFFFFF, 0.4);
+$white10: rgba(#FFFFFF, 0.1);
+//ブラウン
+$brown90: #36281D;
+$brown80: #453628;
+$brown70: #524231;
+$brown60: #614F3B;
+$brown50: #6B5842;
+$brown40: #81705E;
+$brown30: #978A7B;
+$brown20: #B5ABA1;
+$brown10: #D3CDC6;
+$brown05: #EDEBE9;
+//パープル
+$purple90: #452979;
+$purple80: #5F348B;
+$purple70: #6D3A94;
+$purple60: #7D419E;
+$purple50: #8946A4;
+$purple40: #995CB2;
+$purple30: #AA77C0;
+$purple20: #C29CD2;
+$purple10: #D9C3E3;
+$purple05: #F0E7F4;
+//ピンクレッド
+$pinkRed10: #FAEEE3;
+$pink90: #702D4F;
+$pink80: #91385A;
+$pink70: #A43F60;
+$pink60: #B84567;
+$pink50: #C84A6B;
+$pink40: #CB5D7F;
+$pink30: #D07695;
+$pink20: #D99BB2;
+$pink10: #E7C1D0;
+$pink05: #F5E6EC;
+//グリーン
+$green90: #46642A;
+$green80: #66853C;
+$green70: #799946;
+$green60: #8DAD51;
+$green50: #9CBD5A;
+$green40: #AAC671;
+$green30: #B9D089;
+$green20: #CCDEAA;
+$green10: #E0EBCB;
+$green05: #F3F7EA;
+//ブルー
+$blue90: #285656;
+$blue80: #38797E;
+$blue70: #418C95;
+$blue60: #4BA1AD;
+$blue50: #53B0BF;
+$blue40: #5FBBC6;
+$blue30: #72C6CF;
+$blue20: #95D7DC;
+$blue10: #BDE7E9;
+$blue05: #E4F5F6;
+//オレンジ
+$orange90: #A04D24;
+$orange80: #B75B2C;
+$orange70: #C46230;
+$orange60: #D26934;
+$orange50: #DB6F39;
+$orange40: #DF8152;
+$orange30: #E2966F;
+$orange20: #E9B297;
+$orange10: #F2D1C0;
+$orange05: #F5EAE7;
+//レッド
+$red90: #9C2D2F;
+$red80: #AA3639;
+$red70: #B63C40;
+$red60: #C74648;
+$red50: #D54E4B;
+$red40: #D15C5F;
+$red30: #CB777C;
+$red20: #DA9CA0;
+$red10: #F1CED5;
+$red05: #F9EBEF;
+//イエロー
+$yellow90: #907F42;
+$yellow80: #B2A450;
+$yellow70: #C6BA58;
+$yellow60: #DAD062;
+$yellow50: #EAE269;
+$yellow40: #EEE77B;
+$yellow30: #F2EC90;
+$yellow20: #F6F2AE;
+$yellow10: #FAF6CD;
+$yellow05: #FDFCEB;
+//背景グラデーション
+$bg-100: #fcf0eb;
+$bg-grade: linear-gradient(to bottom right, #fff0ea 0%, #fffbf4 60%, #fcf0eb 100%);
+
+/*==========================*/
+/********* テキスト変数 *********/
+/*==========================*/
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+// font-family
+$notoSans: 'Noto Sans JP', sans-serif;
+
+//font-size
+$text-12: 0.75rem; //12px
+$text-14: 0.875rem; //14px
+$text-16: 1rem; //16px
+$text-18: 1.125rem; //18px
+$text-20: 1.25rem; //20px
+$text-24: 1.5rem; //24px
+$text-32: 2rem; //32px
+$text-36: 2.25rem; //36px
+$text-40: 2.5rem; //40px
+$text-48: 3rem; //48px
+$text-64: 4rem; //64px
+
+//line-height
+$none : 1;
+$tight : 1.25;
+$normal : 1.5;
+$relaxed : 1.75;
+//font-weight
+$regular : 400;
+$medium : 500;
+$bold : 700;
+
+/*==========================*/
+/****** スペーシング ******/
+/*==========================*/
+$space-2: 0.125rem; //2px
+$space-4: 0.25rem; //4px
+$space-6: 0.375rem; //6px
+$space-8: 0.5rem; //8px
+$space-10: 0.625rem; //10px
+$space-12: 0.75rem; //12px
+$space-16: 1rem; //16px
+$space-20: 1.25rem; //20px
+$space-24: 1.5rem; //24px
+$space-32: 2rem; //32px
+$space-40: 2.5rem; //40px
+$space-48: 3rem; //48px
+$space-56: 3.5rem; //56px
+$space-64: 4rem; //64px 
+$space-72: 4.5rem; //72px
+$space-80: 5rem; //80px
+$space-88: 5.5rem; //88px
+$space-96: 6rem; //96px
+$space104: 6.5rem; //104px
+$space112: 7rem; //112px
+$space120: 7.5rem; //120px
+$space160: 10rem; //160px
+$space200: 12.5rem; //200px
+
+
+/*==========================*/
+/****** セクションインナー ******/
+/*==========================*/
+$container : 960px;
+$containerS : 700px;
+$containerL : 1200px;

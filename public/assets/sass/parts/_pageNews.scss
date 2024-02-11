@@ -1,0 +1,43 @@
+/*==========================*/
+/**** ID:pageNews ****/
+/*==========================*/
+#pageNews {
+
+/*==========================*/
+/**** ID:head ****/
+/*==========================*/
+.head {
+    margin-top: 10.125rem;
+    margin-bottom: 1rem;
+    @include pc {
+        margin-top: 4.125rem;
+    } 
+    @include sp-lg {
+        margin-top: 4.125rem;
+    }
+}
+
+/*==========================*/
+/**** class:newsMain ****/
+/*==========================*/
+.newsMain {
+    &__newsList {
+        .iconText {
+            &__icon {
+                vertical-align: middle;
+            }
+        }
+        .tag {
+            a {
+                display: inline;
+                @include tag_s;
+                @include tag_black;
+                &+a {
+                    margin-left: $space-4;
+                }
+            }
+        }
+    }
+}
+
+}

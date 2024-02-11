@@ -1,0 +1,121 @@
+/*==========================*/
+/**** ID:funeralMap ****/
+/*==========================*/
+.marker_address {
+    &--icon {
+        @include icon_s($black30);
+    }
+}
+.marker_detail {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* 表示したい行数を指定 */
+    overflow: hidden;
+}
+.marker_thumbnail {
+    width: 12rem;
+    margin-bottom: 0.5rem;
+    @include sp-lg {
+        text-align: center;
+        width: 98%;
+    }
+}
+
+/* funeralMap */
+#funeralMap {
+    max-width: 1200px;
+    width: 100%;
+    height: 600px;
+}
+.marker_name {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+    position: relative;
+    color: #333;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+}
+.marker_area{
+    display: none;
+}
+.gmnoprint{
+    display: none;
+}
+.marker-bt{
+    padding-top:12px;
+    padding-bottom: 0px;
+}
+.marker_address {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+    font-weight: 500;
+    padding-bottom: 4px;
+}
+.marker_tel{
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+    font-weight: 500;
+}
+.marker-w svg {
+    font-size: 14px;
+    margin-right: 4px;
+    margin-bottom: -2px;
+}
+.marker_detail{
+    padding-top: 8px;
+    font-size: 11px;
+    line-height: 1.4;
+    color: #333;
+    font-weight: 300;
+    padding-left: 20px;
+}
+.btn-w{
+    background-color: #f6f6f6;
+    width: 100%;
+    display: block;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-right: 15px;
+    padding-left: 9px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    text-align: right;
+    margin-top: 16px;
+}
+.btn-w-text{
+    text-decoration: none;
+    font-size: 11px;
+    line-height: 1.4;
+    color: #333;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+#funeralMap a:hover {
+    color: inherit;
+}
+.gm-ui-hover-effect{
+    top:0!important;
+    right: 0!important;
+}
+
+/* ================================== */
+/*                 sp                 */
+/* ================================== */
+@media screen and (max-width: 768px) {
+
+    /* funeralMap */
+    #funeralMap {
+        height: calc(300vw / 375 * 100);
+    }
+    /* map */
+    .ly_map{
+        padding-top:40px;
+    }
+    .bl_map_text-1 {
+        font-size: calc(20vw / 375 * 100);
+    }
+}

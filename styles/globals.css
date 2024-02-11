@@ -145,3 +145,12 @@ a {
 .marker-w{
   color: #000;
 }
+
+/*共通*/
+/* recapture=reset */
+.grecaptcha-badge{
+  display:none!important;
+}
+
+
+

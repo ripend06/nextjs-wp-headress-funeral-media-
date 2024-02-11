@@ -1,0 +1,111 @@
+#pageSimulator {
+    .head {
+        margin-top: 10.125rem;
+        margin-bottom: 2.5rem;
+        @include pc {
+            margin-top: 4.125rem;
+        } 
+        @include sp-lg {
+            margin-top: 4.125rem;
+        }
+    }
+    .content {
+        margin-top: 0; //親テーマのCSSをリセット
+    }
+    .title {
+        text-align: center;
+        margin-bottom: 2.5rem;
+        .h1--default {
+            margin-bottom: 1.5rem;
+        }
+    }
+    .simulatorQuestion{
+        margin-bottom: 2.5rem;
+        &__main {
+            margin-bottom: 1.5rem;
+            &.width--50 {
+                width: 50%;
+            }
+            &.widthSp--100 {
+                @include tab {
+                    width: 100%;
+                }
+            }
+        }
+        &__aside {
+            background-color: $black5;
+            padding: 1rem 2rem;
+            @include sp-lg {
+                padding: 1rem;
+            }
+        }
+        &__title {
+            margin-bottom: 1.5rem;
+        }
+    }
+    .h2--sm {
+        margin-bottom: 0.5rem;
+    }
+    .headingWrap--h3Underline {
+        margin-bottom: 1rem;
+    }
+    //ラジオボタン
+    .radioGroup {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 0.75rem;
+        @include sp-lg {
+            gap: 0.5rem 0.75rem;
+        }
+    }
+    .radioItem--m {
+        width: 14.25rem;
+    }
+    .radioItemSp--s {
+        @include sp-lg {
+            width: 48%;
+        }
+    }
+    //セレクト
+    .selectItem {
+        & + .selectItem {
+            margin-top: 1rem;
+        }
+        &::after {
+            right: 5.25rem;
+        }
+        &__text {
+            display: inline-block;
+            margin-left: 1rem;
+            @include sp-lg {
+                margin-left: 0.5rem;
+            }
+        }
+    }
+    .selectLabel {
+        width: 9.5rem;
+        margin-right: 1rem;
+    }
+    .selectWrap {
+        width: 48%;
+        @include sp-lg {
+            width: 80%;
+        }
+    }
+    //q1テーブル
+    #simulatorQuestion__asideQ {
+        cursor: pointer;
+    }
+    #simulatorQuestion__asideA {
+        display: none; /* 初期状態では非表示 */
+    }
+    .table2--col1 {
+        margin-top: 1rem;
+    }
+    //送信ボタン
+    .buttonWrap {
+        text-align: center;
+        padding: 2.5rem 0;
+        margin-bottom: 2.5rem;
+    }
+}
