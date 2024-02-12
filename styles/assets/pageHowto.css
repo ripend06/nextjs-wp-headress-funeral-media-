@@ -1,0 +1,105 @@
+@charset "UTF-8";
+/*==========================*/
+/****** ブレイクポイント ******/
+/*==========================*/
+/*==========================*/
+/********* カラー変数 *********/
+/*==========================*/
+/*==========================*/
+/********* テキスト変数 *********/
+/*==========================*/
+body {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+/*==========================*/
+/****** スペーシング ******/
+/*==========================*/
+/*==========================*/
+/****** セクションインナー ******/
+/*==========================*/
+#pageHowto .head {
+  margin-top: 10.125rem;
+  margin-bottom: 1rem;
+}
+@media screen and (max-width: 1100px) {
+  #pageHowto .head {
+    margin-top: 4.125rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  #pageHowto .head {
+    margin-top: 4.125rem;
+  }
+}
+#pageHowto .mv {
+  background-image: url("https://kansha-ososhiki.com/wp-content/uploads/2023/09/mv.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 5rem 0;
+}
+#pageHowto .mv__title {
+  margin-bottom: 0.5rem;
+}
+@media screen and (max-width: 768px) {
+  #pageHowto .mv {
+    padding: 2rem 0;
+  }
+}
+#pageHowto .staffCommentWrap {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+@media screen and (max-width: 768px) {
+  #pageHowto .whatisFuneral img {
+    height: 7.5rem;
+  }
+}
+#pageHowto .pointCard {
+  margin-bottom: 1rem;
+}
+#pageHowto .ChiefMournerWork__box {
+  height: 100%;
+}
+#pageHowto .ChiefMournerWork__title {
+  margin-bottom: 0.5rem;
+}
+#pageHowto .ChiefMournerWork__list + .moshuwork__list {
+  margin-top: 0.5rem;
+}
+#pageHowto .publicOffice__list + .publicOffice__list {
+  margin-top: 0.5rem;
+}
+#pageHowto .choosePoint__list {
+  border-bottom: 1px solid rgba(49, 47, 47, 0.1);
+}
+#pageHowto .choosePoint__list + .choosePoint__list {
+  margin-top: 1rem;
+}
+#pageHowto .choosePoint__tag {
+  margin-bottom: 0.5rem;
+}
+#pageHowto .choosePoint__text {
+  margin-bottom: 1rem;
+}
+#pageHowto .megaMessage {
+  margin-top: 2rem;
+}
+#pageHowto .bgImgBlock {
+  margin-top: 1rem;
+  background-image: url("https://kansha-ososhiki.com/wp-content/uploads/2023/09/toSimulator.png");
+}
+#pageHowto .lowFuneralDayBox__title {
+  margin-bottom: 0.5rem;
+}
+#pageHowto .lowFuneralDayBox__text {
+  margin-bottom: 0.5rem;
+}
+#pageHowto .lowFuneralDayBox__lists {
+  border: 1px solid rgba(49, 47, 47, 0.1);
+  padding: 1rem;
+}
+#pageHowto .lowFuneralDayBox__list + .lowFuneralDayBox__list {
+  margin-top: 0.5rem;
+}

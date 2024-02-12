@@ -1,0 +1,133 @@
+@import "./parts/variables"; // 変数
+//@import "./components"; // Components
+
+body {
+    background-color: #f4f5f7;
+    line-height: 1.8;
+}
+a:where(:not(.wp-element-button)) {
+    text-decoration: underline;
+}
+#header {
+    background-color: #ffffff;
+    a:where(:not(.wp-element-button)) {
+        text-decoration: none;
+    }
+    
+}
+.content {
+    margin-top: 0;
+}
+#content {
+    margin-top: 11.125rem;
+    @media screen and (max-width: 1100px) {
+        margin-top: 4.625rem;
+    }
+    @media screen and (max-width: 768px) {
+        margin-top: 4.375rem;
+    }
+}
+main.main {
+    margin: 0px;
+    @media screen and (max-width: 1100px) {
+        margin: 0px 0px 98px 0px;
+    }
+}
+div.sidebar {
+    margin: 0px 0;
+    @media screen and (max-width: 1100px) {
+        margin-top: 72px;
+    }
+}
+.article {
+    a {
+        color: #1967d2;
+    }
+    a:link {
+        color: #1967d2;
+    }
+    a:visited {
+        color: #1967d2;
+    }
+}
+.toc {
+    a {
+        color: var(--cocoon-text-color);
+        text-decoration: none;
+    }
+    a:link {
+        color: var(--cocoon-text-color);
+        text-decoration: none;
+    }
+    a:visited {
+        color: var(--cocoon-text-color);
+        text-decoration: none;
+    }
+}
+.sns-share {
+    a {
+        color: #ffffff;
+    }
+    a:link {
+        color: #ffffff;
+    }
+    a:visited {
+        color: #ffffff;
+    }
+}
+.sns-follow {
+    a {
+        color: #ffffff;
+    }
+    a:link {
+        color: #ffffff;
+    }
+    a:visited {
+        color: #ffffff;
+    }   
+}
+a.cat-link {
+    color: var(--cocoon-white-color);
+}
+a:link.cat-link {
+    color: var(--cocoon-white-color);
+}
+a:visited.cat-link {
+    color: var(--cocoon-white-color);
+}
+.page-numbers {
+    height: 46px;
+    width: 46px;
+    border: 1px solid var(--cocoon-thin-color);
+    margin: 0 4px;
+    line-height: 46px;
+}
+.page-numbers.current {
+    color: var(--cocoon-text-color);
+}
+#primary {
+    margin-bottom: 80px;
+}
+.mobile-menu-buttons{
+display: none;
+}
+#footer {
+display: none;
+}
+#floating {
+    ul {
+        padding-left: 0px;
+    }
+    a {
+    text-decoration: none;
+    }  
+}
+.breadcrumb {
+    margin: 1em 0.4em;
+    color: var(--cocoon-x-pallid-text-color);
+    font-size: 13px;
+}
+.breadcrumb .sp {
+    margin: 0 10px;
+    display: initial;
+}

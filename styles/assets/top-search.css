@@ -1,0 +1,80 @@
+@charset "UTF-8";
+/*==========================*/
+/****** ブレイクポイント ******/
+/*==========================*/
+/*==========================*/
+/********* カラー変数 *********/
+/*==========================*/
+/*==========================*/
+/********* テキスト変数 *********/
+/*==========================*/
+body {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+/*==========================*/
+/****** スペーシング ******/
+/*==========================*/
+/*==========================*/
+/****** セクションインナー ******/
+/*==========================*/
+#top-search {
+  padding-top: 2.5rem;
+  background-color: #F8F9FA;
+}
+#top-search__wrap {
+  margin-bottom: 6rem;
+}
+@media screen and (max-width: 768px) {
+  #top-search__wrap {
+    margin-bottom: 2rem;
+  }
+}
+#top-search .container {
+  max-width: 1200px;
+}
+#top-search .searchBlock + .searchBlock {
+  margin-top: 4rem;
+}
+@media screen and (max-width: 768px) {
+  #top-search .searchBlock + .searchBlock {
+    margin-top: 2rem;
+  }
+}
+#top-search .searchBlock__titleWrap {
+  margin-bottom: 1.5rem;
+}
+@media screen and (max-width: 768px) {
+  #top-search .searchBlock__titleWrap {
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+}
+#top-search .searchBlock__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #312f2f;
+  line-height: 1.5;
+}
+@media screen and (max-width: 960px) {
+  #top-search .searchBlock__title {
+    font-size: 2.5vw;
+  }
+}
+@media screen and (max-width: 768px) {
+  #top-search .searchBlock__title {
+    font-size: 5.33vw;
+  }
+}
+#top-search .searchBlock__lists {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 1.5rem 1rem;
+}
+@media screen and (max-width: 768px) {
+  #top-search .searchBlock__lists {
+    justify-content: flex-start;
+    gap: 0.75rem 1rem;
+  }
+}

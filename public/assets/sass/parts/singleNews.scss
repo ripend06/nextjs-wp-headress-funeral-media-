@@ -1,0 +1,67 @@
+@import "./variables"; // 変数
+@import "./components"; // Components
+
+#singleNews {
+
+/*==========================*/
+/**** ID:head ****/
+/*==========================*/
+.head {
+    margin-top: 10.125rem;
+    margin-bottom: 1rem;
+    @include pc {
+        margin-top: 4.125rem;
+    } 
+    @include sp-lg {
+        margin-top: 4.125rem;
+    }
+}
+/*==========================*/
+/**** ID:main ****/
+/*==========================*/
+.main {
+    //mainクラスはありません。idです。
+    &__head {
+        .tag {
+            a {
+                display: inline;
+                @include tag_s;
+                @include tag_black;
+                &+a {
+                    margin-left: $space-4;
+                }
+            }
+        }
+    }
+    &__content {
+        // Cocoon目次を非表示
+        #toc {
+            display: none;
+        }
+        .search-edit, input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea, select {
+            font-size: $text-16;
+            color: $black80;
+        }
+        input::placeholder, textarea::placeholder {
+            font-size: $text-16;
+            color: $black10;
+        }
+        .wpcf7-submit {
+            font-family: FontAwesome;
+        }
+        input[type='submit'] {
+            font-size: $text-16;
+            font-weight: bold;
+            background-color: #DB6F39;
+            border: 1px solid #DB6F39;
+            color: white;
+            box-shadow: 0px 2px 0px 0px #A04D24;
+            padding: 1.5rem 2.5rem;
+        }
+        input[type='submit']:hover {
+            box-shadow: none;
+        
+        }
+    }
+}
+}

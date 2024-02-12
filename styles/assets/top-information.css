@@ -1,0 +1,67 @@
+@charset "UTF-8";
+/*==========================*/
+/****** ブレイクポイント ******/
+/*==========================*/
+/*==========================*/
+/********* カラー変数 *********/
+/*==========================*/
+/*==========================*/
+/********* テキスト変数 *********/
+/*==========================*/
+body {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+/*==========================*/
+/****** スペーシング ******/
+/*==========================*/
+/*==========================*/
+/****** セクションインナー ******/
+/*==========================*/
+#topInformation {
+  padding-top: 2.5rem;
+  background-color: #F8F9FA;
+}
+#topInformation__wrap {
+  margin-bottom: 12.5rem;
+}
+@media screen and (max-width: 768px) {
+  #topInformation__wrap {
+    margin-bottom: 4rem;
+  }
+}
+#topInformation .container {
+  max-width: 1200px;
+}
+#topInformation .topInformationBlock + .topInformationBlock {
+  margin-top: 3.5rem;
+}
+@media screen and (max-width: 768px) {
+  #topInformation .topInformationBlock + .topInformationBlock {
+    margin-top: 2rem;
+  }
+}
+#topInformation .topInformationBlock__titleWrap {
+  margin-bottom: 1.5rem;
+}
+@media screen and (max-width: 768px) {
+  #topInformation .topInformationBlock__titleWrap {
+    margin-bottom: 1rem;
+  }
+}
+#topInformation .topInformationBlock__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #312f2f;
+  line-height: 1.5;
+}
+@media screen and (max-width: 960px) {
+  #topInformation .topInformationBlock__title {
+    font-size: 2.5vw;
+  }
+}
+@media screen and (max-width: 768px) {
+  #topInformation .topInformationBlock__title {
+    font-size: 5.33vw;
+  }
+}

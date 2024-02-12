@@ -1,0 +1,67 @@
+@charset "UTF-8";
+/*==========================*/
+/****** ブレイクポイント ******/
+/*==========================*/
+/*==========================*/
+/********* カラー変数 *********/
+/*==========================*/
+/*==========================*/
+/********* テキスト変数 *********/
+/*==========================*/
+body {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+/*==========================*/
+/****** スペーシング ******/
+/*==========================*/
+/*==========================*/
+/****** セクションインナー ******/
+/*==========================*/
+/*==========================*/
+/**** ID:pagePlace ****/
+/*==========================*/
+#pagePlace {
+  /*==========================*/
+  /**** ID:head ****/
+  /*==========================*/
+  /* WP-reset */
+  /*==========================*/
+  /**** addInfo ****/
+  /*==========================*/
+}
+#pagePlace .head {
+  margin-top: 10.125rem;
+  margin-bottom: 1rem;
+}
+@media screen and (max-width: 1100px) {
+  #pagePlace .head {
+    margin-top: 4.125rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  #pagePlace .head {
+    margin-top: 4.125rem;
+  }
+}
+#pagePlace #sidebar {
+  display: none;
+}
+#pagePlace #footer {
+  display: none;
+}
+#pagePlace .mobile-menu-buttons {
+  display: none;
+}
+#pagePlace .addInfo .col--2 {
+  align-items: center;
+}
+@media screen and (max-width: 768px) {
+  #pagePlace .addInfo .col--2 {
+    justify-content: center;
+  }
+}
+#pagePlace .addInfo__icon {
+  font-size: 2rem;
+  color: #D54E4B;
+}

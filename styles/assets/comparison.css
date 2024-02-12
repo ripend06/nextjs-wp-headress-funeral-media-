@@ -1,0 +1,49 @@
+@charset "UTF-8";
+/*==========================*/
+/****** ブレイクポイント ******/
+/*==========================*/
+/*==========================*/
+/********* カラー変数 *********/
+/*==========================*/
+/*==========================*/
+/********* テキスト変数 *********/
+/*==========================*/
+body {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+/*==========================*/
+/****** スペーシング ******/
+/*==========================*/
+/*==========================*/
+/****** セクションインナー ******/
+/*==========================*/
+/* comparison */
+.ly_comparison {
+  padding-top: 32px;
+  padding-bottom: 48px;
+}
+
+.comparison_text-1 {
+  color: var(--black-100, #312F2F);
+  text-align: center;
+  font-size: 32px;
+  font-family: "a-otf-ryumin-pr6n", serif;
+  font-weight: 300;
+  line-height: 100%;
+  padding-bottom: 24px;
+}
+
+/* ================================== */
+/*                 sp                 */
+/* ================================== */
+@media screen and (max-width: 768px) {
+  /* comparison */
+  .ly_comparison {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .comparison_text-1 {
+    font-size: 5.3333333333vw;
+  }
+}

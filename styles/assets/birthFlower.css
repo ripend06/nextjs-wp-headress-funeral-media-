@@ -1,0 +1,107 @@
+@charset "UTF-8";
+/*==========================*/
+/****** ブレイクポイント ******/
+/*==========================*/
+/*==========================*/
+/********* カラー変数 *********/
+/*==========================*/
+/*==========================*/
+/********* テキスト変数 *********/
+/*==========================*/
+body {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+/*==========================*/
+/****** スペーシング ******/
+/*==========================*/
+/*==========================*/
+/****** セクションインナー ******/
+/*==========================*/
+/* birthFlower */
+.ly_birthFlower {
+  padding-top: 40px;
+  padding-bottom: 48px;
+  background-color: #fcf0eb;
+  background-color: linear-gradient(to bottom right, #fff0ea 0%, #fffbf4 60%, #fcf0eb 100%);
+}
+
+.bl_birthFlower_b-1-img {
+  max-width: calc(100% - 456px);
+  width: 100%;
+}
+
+.bl_birthFlower_text-1 {
+  font-size: 2rem;
+  font-family: "noto-sans-cjk-jp", sans-serif;
+  font-weight: 500;
+  line-height: 1.75;
+  background-image: linear-gradient(90deg, #E10051, #D88E00 120%);
+  -webkit-text-fill-color: transparent;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding-bottom: 1rem;
+}
+
+.bl_birthFlower_text-2 {
+  color: rgba(49, 47, 47, 0.9);
+  font-size: 1rem;
+  font-family: "noto-sans-cjk-jp", sans-serif;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.bl_birthFlower_text-3 {
+  color: rgba(49, 47, 47, 0.8);
+  font-size: 1rem;
+  font-family: "noto-sans-cjk-jp", sans-serif;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+.bl_birthFlower_left {
+  max-width: 400px;
+  width: 100%;
+  margin-right: 3.8888888889vw;
+}
+
+.bl_birthFlower_in {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+/* ================================== */
+/*                 sp                 */
+/* ================================== */
+@media screen and (max-width: 768px) {
+  /* birthFlower */
+  .bl_birthFlower_in {
+    display: block;
+  }
+  .ly_birthFlower {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .bl_birthFlower_left {
+    max-width: 100%;
+    margin-right: 0;
+  }
+  .bl_birthFlower_text-1 {
+    font-size: 6.9333333333vw;
+    padding-bottom: 16px;
+  }
+  .bl_birthFlower_text-2 {
+    text-align: left;
+    padding-bottom: 8px;
+  }
+  .bl_birthFlower_text-3 {
+    font-size: 14px;
+    padding-bottom: 24px;
+    text-align: left;
+  }
+  .bl_birthFlower_b-1-img {
+    max-width: 100%;
+  }
+}

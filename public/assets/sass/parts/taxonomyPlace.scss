@@ -1,0 +1,260 @@
+@import "./variables"; // 変数
+@import "./components"; // Components
+
+/*==========================*/
+/**** ID:pagePlace ****/
+/*==========================*/
+#archivePlace {
+
+/*==========================*/
+/**** ID:head ****/
+/*==========================*/
+.head {
+    margin-top: 10.125rem;
+    margin-bottom: 1rem;
+    @include pc {
+        margin-top: 4.125rem;
+    } 
+    @include sp-lg {
+        margin-top: 4.125rem;
+    }
+}
+
+/*==========================*/
+/**** ID:map ****/
+/*==========================*/
+.map {
+    #funeralMap {
+        height: 480px;
+        @include sp-lg {
+            height: 106.67vw;
+        }
+    }
+}
+/*==========================*/
+/**** ID:places ****/
+/*==========================*/
+.place {
+    padding: 1rem 0;
+    border: 1px solid $black10;
+    border-radius: 4px;
+    @include sp-lg {
+       padding: 0.75rem 0;
+    }
+    & + .place {
+        margin-top: 1rem;
+    }
+}
+.placeHead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0 0.5rem;
+    padding: 0 2rem 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid $black10;
+    @include sp-lg {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.125rem 0;
+        padding: 0 1rem 0.75rem;
+        margin-bottom: 0.75rem;
+     }
+    &__title {
+        color: $black100;
+        font-size: $text-24;
+        font-weight: $bold;
+        line-height: $normal;
+        max-width: 45%;
+        @include sp-lg {
+            font-size: $text-18;
+            max-width: 100%;
+        }
+    }
+    &__address {
+        width: 35%;
+        @include sp-lg {
+            width: 100%;
+        }
+    }
+    &__icon {
+        @include icon_m($black80);
+        @include sp-lg {
+            @include icon_s($black80);
+        }
+    }
+    &__text {
+        color: $black100;
+        font-size: $text-16;
+        font-weight: $regular;
+        line-height: $normal;     
+        @include sp-lg {
+            font-size: $text-14;
+        }   
+    }
+    &__btn {
+        width: 12rem;
+        @include sp-lg {
+            display: none;
+        }
+    }
+    &__a {
+        display: inline-block;
+        color: $black100;
+        font-size: $text-16;
+        font-weight: $bold;
+        line-height: $normal;  
+        border: 1px solid $black20;
+        border-radius: 7px;  
+        box-shadow: 0px 2px 0px $black20; 
+        padding: 0.75rem 2.5rem;
+        transition: .3s;
+        &:hover {
+            transform: translateY(2px);
+            box-shadow: none; 
+        }
+        @include tab {
+            padding: 0.75rem 2rem;
+        }
+    }
+}
+.placeContent {
+    padding: 0 2rem;
+    @include sp-lg {
+        padding: 0 1rem;
+    }
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        gap: 0 2rem;
+        @include sp-lg {
+            gap: 0 0.5rem;
+        }
+    }
+    &__img {
+        display: flex;
+        align-items: flex-start;
+        width: 25%;
+        flex-shrink: 0;
+        @include sp-lg {
+            width: 45%;
+        }
+        img {
+            height: 10rem;
+            object-fit: cover;
+            @include sp-lg {
+                height: 34vw;
+            }
+        }
+    }
+    &__wrap {
+        width: 72%;
+        @include sp-lg {
+            width: 53%;
+        }
+    }
+    &__icon {
+        @include icon_m($black80);
+        @include sp-lg {
+            @include icon_s($black80);
+        }
+    }
+    &__access {
+        color: $black100;
+        font-size: $text-16;
+        font-weight: $regular;
+        line-height: $normal;   
+        margin-bottom: 0.75rem; 
+        @include sp-lg {
+            font-size: $text-14;
+        }
+        .iconText {
+            flex-wrap: wrap;
+        }
+    }
+    &__station {
+        color: $black100;
+        font-size: $text-16;
+        font-weight: $bold;
+        line-height: $normal;   
+        @include sp-lg {
+            font-size: $text-14;
+        }     
+    }
+    &__text {
+        color: $black80;
+        font-size: $text-16;
+        font-weight: $regular;
+        line-height: $normal;  
+        margin-bottom: 1.5rem;
+        @include sp-lg {
+            font-size: $text-14;
+            margin-top: 0.75rem;
+            margin-bottom: 0;
+        }   
+    }
+    &__text--pc {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2; /* 表示したい行数を指定 */
+        overflow: hidden;
+    }
+    &__text--sp {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3; /* 表示したい行数を指定 */
+        overflow: hidden;
+    }
+    &__tag {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        // &--size {
+        //     @include tag_m;
+        //     @include sp-lg {
+        //         @include tag_xs;
+        //     }     
+        // }
+        &--color {
+            @include tag_gray;
+            &.active {
+                @include tag_brown;
+            }
+        }
+    }
+}
+/*==========================*/
+/**** ID:pageNation ****/
+/*==========================*/
+.pageNation {
+    margin-bottom: 10rem;
+}
+
+/*==========================*/
+/**** addInfo ****/
+/*==========================*/
+.addInfo {
+    .col--2 {
+        align-items: center;
+        @include sp-lg {
+            justify-content: center;
+        }
+    }
+    &__icon {
+        font-size: $text-32;
+        color: $red50;
+    }
+}
+
+/* WP-reset */
+#sidebar{
+    display:none;
+}
+#footer{
+    display:none;
+}
+.mobile-menu-buttons {
+    display: none;
+}
+
+}

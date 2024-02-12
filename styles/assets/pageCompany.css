@@ -1,0 +1,108 @@
+@charset "UTF-8";
+/*==========================*/
+/****** ブレイクポイント ******/
+/*==========================*/
+/*==========================*/
+/********* カラー変数 *********/
+/*==========================*/
+/*==========================*/
+/********* テキスト変数 *********/
+/*==========================*/
+body {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+/*==========================*/
+/****** スペーシング ******/
+/*==========================*/
+/*==========================*/
+/****** セクションインナー ******/
+/*==========================*/
+/*==========================*/
+/**** ID:pageCompany ****/
+/*==========================*/
+#pageCompany {
+  /*==========================*/
+  /**** ID:head ****/
+  /*==========================*/
+}
+#pageCompany .head {
+  margin-top: 10.125rem;
+  padding-bottom: 3rem;
+}
+@media screen and (max-width: 1100px) {
+  #pageCompany .head {
+    margin-top: 5.25rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  #pageCompany .head {
+    margin-top: 4.375rem;
+  }
+}
+#pageCompany .head__title {
+  margin-top: 2rem;
+}
+#pageCompany .head__h1--style {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #312f2f;
+  line-height: 1.5;
+}
+@media screen and (max-width: 960px) {
+  #pageCompany .head__h1--style {
+    font-size: 4.166vw;
+  }
+}
+@media screen and (max-width: 768px) {
+  #pageCompany .head__h1--style {
+    font-size: 1.5rem;
+  }
+}
+#pageCompany .content1 {
+  margin-bottom: 4rem;
+}
+@media screen and (max-width: 768px) {
+  #pageCompany .content1 {
+    margin-bottom: 4rem;
+  }
+}
+#pageCompany .content {
+  margin-top: 0;
+}
+#pageCompany .title {
+  margin-bottom: 2rem;
+}
+#pageCompany .staffCommentWrap {
+  margin-bottom: 2.5rem;
+}
+#pageCompany .staffCommentWrap .box--white {
+  margin-bottom: 1rem;
+}
+#pageCompany .fullBg {
+  background: linear-gradient(to bottom right, #fff0ea 0%, #fffbf4 60%, #fcf0eb 100%);
+}
+#pageCompany .staff-images {
+  padding: 6rem 0;
+}
+@media screen and (max-width: 768px) {
+  #pageCompany .staff-images {
+    padding: 2.5rem 0;
+  }
+}
+#pageCompany .staff-images .staff-images-images {
+  display: flex;
+  gap: 1.5rem;
+}
+#pageCompany .staff-images .staff-images-images .staff-images-images-item {
+  flex: 1;
+}
+#pageCompany .staff-images .staff-images-images img {
+  width: 100%;
+}
+#pageCompany .staff-images .staff-images-text {
+  margin-top: 1rem;
+}
+#pageCompany .staff-images .staff-images-text .colorPink {
+  color: #B84567;
+}
