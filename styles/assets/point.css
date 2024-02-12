@@ -1,0 +1,120 @@
+@charset "UTF-8";
+/*==========================*/
+/****** ブレイクポイント ******/
+/*==========================*/
+/*==========================*/
+/********* カラー変数 *********/
+/*==========================*/
+/*==========================*/
+/********* テキスト変数 *********/
+/*==========================*/
+body {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+/*==========================*/
+/****** スペーシング ******/
+/*==========================*/
+/*==========================*/
+/****** セクションインナー ******/
+/*==========================*/
+/* point */
+.ly_point {
+  background: white;
+  padding-top: 40px;
+  padding-bottom: 48px;
+}
+
+.bl_point_text-1 {
+  color: #312f2f;
+  text-align: center;
+  font-size: 32px;
+  font-family: "noto-sans-cjk-jp", sans-serif;
+  font-weight: 700;
+  line-height: 150%;
+  padding-bottom: 24px;
+}
+
+.bl_point_card {
+  background: #fcf0eb;
+  background: linear-gradient(to bottom right, #fff0ea 0%, #fffbf4 60%, #fcf0eb 100%);
+  padding: 2rem;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+@media screen and (max-width: 768px) {
+  .bl_point_card {
+    padding: 1.5rem 0.625rem;
+  }
+}
+.bl_point_card__title {
+  background-image: linear-gradient(90deg, #E10051, #D88E00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.bl_point_card__text {
+  margin-bottom: 1rem;
+}
+
+.point__simulation {
+  margin-top: 1.5rem;
+}
+.point__simulation .bgImgBlock {
+  margin-top: 1rem;
+  background-image: url(https://kansha-ososhiki.com/wp-content/uploads/2023/09/toSimulator.png);
+}
+
+.bl_point_c_text-1 {
+  color: #BB4241;
+  font-size: 11px;
+  font-family: "noto-sans-cjk-jp", sans-serif;
+  font-weight: 400;
+  line-height: 150%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.bl_point_c_text-2 {
+  color: var(--black-100, #312F2F);
+  font-size: 20px;
+  font-family: "dnp-shuei-mincho-pr6n", sans-serif;
+  font-weight: 500;
+  line-height: 170%;
+  padding-bottom: 9px;
+}
+
+.bl_point_c_text-3 {
+  color: var(--black-100, #312F2F);
+  font-size: 14px;
+  font-family: "noto-sans-cjk-jp", sans-serif;
+  font-weight: 400;
+  line-height: 170%;
+}
+
+/* ================================== */
+/*                 sp                 */
+/* ================================== */
+@media screen and (max-width: 768px) {
+  /* point */
+  .ly_point {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .bl_point_text-1 {
+    font-size: 5.3333333333vw;
+    padding-bottom: 16px;
+  }
+  .bl_point_wapper_card {
+    display: block;
+  }
+  .bl_point_card {
+    max-width: 100%;
+    padding-bottom: 24px;
+  }
+  .bl_point_c_text-2 {
+    font-size: 18px;
+    padding-bottom: 8px;
+  }
+}

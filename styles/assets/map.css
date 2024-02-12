@@ -1,0 +1,66 @@
+@charset "UTF-8";
+/*==========================*/
+/****** ブレイクポイント ******/
+/*==========================*/
+/*==========================*/
+/********* カラー変数 *********/
+/*==========================*/
+/*==========================*/
+/********* テキスト変数 *********/
+/*==========================*/
+body {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+/*==========================*/
+/****** スペーシング ******/
+/*==========================*/
+/*==========================*/
+/****** セクションインナー ******/
+/*==========================*/
+/* map */
+.ly_map {
+  padding-top: 40px;
+  padding-bottom: 8px;
+  background-color: #F8F9FA;
+  text-align: center;
+}
+
+.bl_map_text-1 {
+  color: #312f2f;
+  text-align: center;
+  font-size: 2rem;
+  font-family: "noto-sans-cjk-jp", sans-serif;
+  font-weight: 700;
+  line-height: 1.5;
+  padding-bottom: 0.5rem;
+}
+@media screen and (max-width: 960px) {
+  .bl_map_text-1 {
+    font-size: 2.66vw;
+  }
+}
+@media screen and (max-width: 768px) {
+  .bl_map_text-1 {
+    font-size: 6.4vw;
+  }
+}
+
+.bl_map_text-2 {
+  color: rgba(49, 47, 47, 0.8);
+  text-align: center;
+  font-size: 1rem;
+  font-family: "noto-sans-cjk-jp", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  padding-bottom: 1rem;
+}
+@media screen and (max-width: 768px) {
+  .bl_map_text-2 {
+    font-size: 0.875rem;
+  }
+}
+
+.map__buttonWrap {
+  margin-top: 1rem;
+}

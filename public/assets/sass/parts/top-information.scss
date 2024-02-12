@@ -1,0 +1,42 @@
+@import "./variables"; // 変数
+//@import "./components"; // Components
+
+#topInformation {
+    padding-top: $space-40;
+    background-color: #F8F9FA;
+    &__wrap {
+        margin-bottom: 12.5rem;
+        @include sp-lg {
+            margin-bottom: 4rem;
+        }
+    }
+    .container {
+        max-width: 1200px;
+    }
+.topInformationBlock {
+    & + .topInformationBlock {
+        margin-top: 3.5rem;
+        @include sp-lg {
+            margin-top: 2rem;
+        }
+    }
+    &__titleWrap {
+        margin-bottom: $space-24;
+        @include sp-lg {
+            margin-bottom: 1rem;
+        }
+    }
+    &__title {
+        font-size: $text-24;
+        font-weight: $bold;
+        color: $black100;
+        line-height: $normal;  
+        @include tab {
+            font-size: 2.5vw;
+        }
+        @include sp-lg {
+            font-size: 5.33vw;
+        } 
+    }
+}
+}

@@ -1,0 +1,78 @@
+@import "./variables"; // 変数
+//@import "./components"; // Components
+
+/* sample */
+.ly_sample{
+    padding-top: $space-40;
+    padding-bottom: $space-40;
+    background: #F8F9FA;
+}
+.bl_sample_text-1{
+    color: $black100;
+    font-size: $text-32;
+    font-family: "noto-sans-cjk-jp", sans-serif;
+    font-weight: $bold;
+    line-height: $normal;
+    width: 20%;
+    white-space: nowrap;
+}
+.bl_sample_text-2{
+    width: 78%;
+}
+.bl_sample_wapper_text-1{
+    display: flex;
+    justify-content: space-between;
+}
+.bl_sample_wapper_text-1{
+    display: flex;
+    align-items: center;
+    gap: $space-8;
+    padding-bottom: $space-16;
+}
+.parent {
+    display: grid;
+    /* // grid-template-columns: repeat(3, 1fr);
+    // grid-template-rows: repeat(2, 1fr); */
+    grid-column-gap: 8px;
+    grid-row-gap: 8px;
+}
+.div1 { grid-area: 1 / 1 / 2 / 3; }
+.div2 { grid-area: 1 / 3 / 2 / 4; }
+.div3 { grid-area: 2 / 1 / 3 / 2; }
+.div4 { grid-area: 2 / 2 / 3 / 3; }
+.div5 { grid-area: 2 / 3 / 3 / 4; }
+
+
+/* ================================== */
+/*                 sp                 */
+/* ================================== */
+@media screen and (max-width: 1100px) {
+
+    /* sample */
+    .bl_sample_wapper_text-1 {
+        display: block;
+    }
+    .bl_sample_text-1{
+        font-size: 2.66vw;
+        width: 100%;
+    }
+    .bl_sample_text-2{
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    /* sample */
+    .bl_sample_wapper_card{
+        width: 100vw;
+        margin: 0 calc(50% - 50vw);
+    }
+    .ly_sample {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .bl_sample_text-1{
+        font-size: 6.4vw;
+    }
+}

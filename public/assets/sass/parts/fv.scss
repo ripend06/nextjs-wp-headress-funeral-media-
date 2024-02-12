@@ -1,0 +1,461 @@
+@import "./variables"; // 変数
+//@import "./components"; // Components
+
+/* fv */
+.ly_fv {
+    background-image: url("https://kansha-ososhiki.com/wp-content/uploads/2023/07/fv-bg-loop.png");
+    background-repeat: repeat;
+    background-position: calc(50% - 30px) top;
+    background-size: contain;
+    padding-bottom: 0px;
+    padding-top:0px;
+    position: relative;
+    margin-top: 10.125rem;
+}
+.bl_fv_h-1-img{
+    max-width: 67px;
+    width: 100%;
+}
+.bl_fv_wapper_text-1{
+    display: flex;
+    align-items: center;
+}
+.bl_fv_text-1{
+    font-size: 52px;
+    font-family: "a-otf-ryumin-pr6n", serif;
+    font-weight: 300;
+    line-height: 120%;
+    letter-spacing: -2.08px;
+    background: linear-gradient(90deg, #000000, #505050, #000000, #4F4C4C, #000000);
+    background: -webkit-linear-gradient(0deg, #000000, #505050, #000000, #4F4C4C, #000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: fit-content;
+}
+.bl_fv_text-1-1{
+    font-size: 52px;
+    font-family: "a-otf-ryumin-pr6n", serif;
+    font-weight: 300;
+    line-height: 120%;
+    letter-spacing: -2.08px;
+    background: linear-gradient(90deg, #000000, #505050 70%, #000000);
+    background: -webkit-linear-gradient(0deg, #000000, #505050 70%, #000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: fit-content;
+}
+.el_fv_el-1{
+    display: inline-block;
+    position: relative;
+    padding-top:4px;
+    padding-bottom:4px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.el_fv_el-1 span{
+    font-size: 13px;
+    font-family: "noto-sans-cjk-jp", sans-serif;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: -0.52px;
+    background: linear-gradient(90deg, #F63279, #E84141);
+    background: -webkit-linear-gradient(0deg, #F63279, #E84141);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    position: relative;
+    z-index: 6;
+}
+.el_fv_el-1::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50px;
+    border: 1px solid transparent;
+    background: linear-gradient(90deg, #F63279, #E84141) border-box border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0) border-box;
+    -webkit-mask-composite: destination-out;
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0) border-box;
+    mask-composite: exclude;
+    z-index: 5;
+}
+.el_fv_el-1::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50px;
+    background-color: #fff;
+    z-index: 4;
+}
+.el_fv_wapper_el{
+    padding-top:16px;
+    padding-bottom: 16px;
+    gap: 4px;
+    display: flex;
+}
+.bl_fv_price_text-1{
+    color: var(--white-100, #FFF);
+    font-size: 14px;
+    font-family: "dnp-shuei-gothic-kin-std", sans-serif;
+    font-weight: 400;
+    line-height: 110%;
+
+    display: flex;
+    padding: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+
+    border: 1px solid var(--white-100, #FFF);
+    margin-right: 2px;
+    margin-bottom: 5px;
+}
+.bl_fv_price_wapper{
+    background-image: url("https://kansha-ososhiki.com/wp-content/uploads/2023/06/fv-price-bg.png");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+
+    border-radius: 4px;
+    width: fit-content;
+}
+.bl_fv_price_text-2{
+    color: var(--white-100, #FFF);
+    font-size: 72px;
+    font-family: "dnp-shuei-gothic-kin-std", sans-serif;
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: -5.04px;
+}
+.bl_fv_price_text-2 span{
+    font-size: 35px;
+    line-height: 0;
+}
+.bl_fv_price_text-3{
+    color: var(--white-100, #FFF);
+    font-size: 15px;
+    font-family: "dnp-shuei-gothic-kin-std", sans-serif;
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: 1.65px;
+    padding-bottom: 4px;
+}
+.bl_fv_price_wapper_text-3{
+    padding-left: 8px;
+    margin-bottom: 5px;
+}
+.bl_fv_price_text-4{
+    color: var(--white-100, #FFF);
+    font-size: 24px;
+    font-family: "dnp-shuei-gothic-kin-std", sans-serif;
+    font-weight: 600;
+    line-height: 100%;
+    letter-spacing: 0.72px;
+}
+.bl_fv_price_text-5{
+    color: rgba(255, 255, 255, 0.80);
+    text-align: right;
+    font-size: 12px;
+    font-family: "dnp-shuei-gothic-kin-std", sans-serif;
+    font-weight: 500;
+    line-height: 100%;
+    padding-left:4px;
+    margin-bottom: 5px;
+}
+.bl_fv_price_text-5 span{
+    font-size: 18px;
+}
+.bl_fv_price{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 16px 20px 12px 20px;
+    border-radius: 4px;
+}
+.bl_fv_price_text-6{
+    color: var(--black-100, #312F2F);
+    font-size: 14px;
+    font-family: "noto-sans-cjk-jp", sans-serif;
+    font-weight: 400;
+    line-height: 170%;
+    padding-top:8px;
+    max-width: 452px;
+    width: 100%;
+}
+.bl_fv_in {
+    display: flex;
+    max-width: 1073px;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+.bl_fv{
+    position: relative;
+}
+.bl_fv::before {
+    content: '';
+    background: var(--bg-default, linear-gradient(135deg, #FFF0EA 0%, #FFFBF4 61.46%, #FCF0EB 96.35%));
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.bl_fv::after {
+    content: '';
+    background-image: url("https://kansha-ososhiki.com/wp-content/uploads/2023/07/fv-p1-bg.png");
+    background-repeat: no-repeat;
+    background-position: calc(50% - -230px) top;
+    background-size: contain;
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+}
+.bl_fv_left{
+    padding-bottom: 38px;
+    padding-top: 40px;
+}
+.bl_fv_fv-p1-img {
+    max-width: 296px;
+    width: 100%;
+    position:relative;
+    bottom: -30px;
+    right: 184px;
+}
+.bl_fv_right{
+    position: relative;
+}
+
+/* fvbt */
+.bl_fv_bt_h-1-img{
+    max-width: 67px;
+    width: 100%;
+    margin-right: 8px;
+}
+.bl_fv_bt_text-1{
+    color: var(--black-90, rgba(49, 47, 47, 0.90));
+    font-size: 20px;
+    font-family: "noto-sans-cjk-jp", sans-serif;
+    font-weight: 700;
+    padding-bottom: 0;
+    line-height: 1.4;
+}
+.bl_fv_bt_text-2{
+    color: var(--black-90, rgba(49, 47, 47, 0.90));
+    font-size: 14px;
+    font-family: "noto-sans-cjk-jp", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+}
+.bl_fv_bt_btn{
+    display: flex;
+    padding-top: 12px;
+    padding-bottom:12px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 7px;
+    background: #E09F52;
+    box-shadow: 0px 2px 0px 0px #99621B;
+    max-height: 70px;
+    max-width: 257px;
+    width: 257px;
+}
+.bl_fv_bt_btn_text-1{
+    color: var(--white-100, #FFF);
+    font-size: 12px;
+    font-family: "noto-sans-cjk-jp", sans-serif;
+    font-weight: 500;
+    line-height: 1.6;
+}
+.bl_fv_bt_btn_text-2{
+    color: var(--white-100, #FFF);
+    font-size: 20px;
+    font-family: "noto-sans-cjk-jp", sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.8px;
+    line-height: 1.6;
+}
+.bl_fv_bt_wapper{
+    display: flex;
+    padding-top:18px;
+    padding-bottom:18px;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+}
+.bl_fv_bt_left{
+    display: flex;
+    align-items: center;
+}
+
+
+/* ================================== */
+/*                 sp                 */
+/* ================================== */
+@media screen and (max-width: 1656px) {
+    /* fv */
+    .ly_fv {
+        background-size: cover;
+    
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    /* fv */
+    .bl_fv::after {
+        background-position: calc(50% + 300px) top;
+    }
+    .ly_fv {
+        background-position: calc(50% - -40px) top;
+    }
+    .bl_fv_fv-p1-img {
+        right: 116px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    /* fv */
+    .ly_fv{
+        margin-top:67px;
+    }
+    .bl_fv_fv-p1-img {
+        right: 70px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .bl_fv_fv-p1-img {
+        right: 40px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .bl_fv::after {
+        background-position: calc(50% + 360px) top;
+    }
+    .ly_fv {
+        background-position: calc(50% - -100px) top;
+    }
+    .bl_fv_fv-p1-img {
+        max-width: 270px;
+        bottom: -66px;
+        right: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* fv */
+    .ly_fv {
+        background-image: url("https://kansha-ososhiki.com/wp-content/uploads/2023/06/fv-sp-bg.png");
+        background-repeat: no-repeat;
+        padding-bottom: 0;
+        background-position: center top;
+    }
+    .bl_fv_text-1-1 {
+        font-size: calc(40vw / 375 * 100);
+        line-height: 160%;
+    }
+    .bl_fv_h-1-img {
+        max-width: calc(40vw / 375 * 100);
+    }
+    .bl_fv_text-1 {
+        font-size: calc(40vw / 375 * 100);
+        line-height: 160%;
+    }
+    .el_fv_wapper_el {
+        display: flex;
+        gap: 4px;
+        flex-wrap: wrap;
+        width: calc(200vw / 375 * 100);
+    }
+    .el_fv_el-1 span {
+        font-size: calc(11vw / 375 * 100);
+    }
+    .bl_fv_price{
+        padding:calc(16vw / 375 * 100);
+        padding-bottom: calc(8vw / 375 * 100);
+    }
+    .bl_fv_price_text-1 {
+        font-size: calc(11vw / 375 * 100);
+        padding: 4px;
+    }
+    .bl_fv_price_text-2 {
+        font-size: calc(36vw / 375 * 100);
+        letter-spacing: -2.04px;
+    }
+    .bl_fv_price_text-4 {
+        font-size: calc(14vw / 375 * 100);
+    }
+    .bl_fv_price_text-3 {
+        font-size: calc(12vw / 375 * 100);
+    }
+    .bl_fv_price_text-5 {
+        font-size: calc(12vw / 375 * 100);
+        padding-bottom: calc(16vw / 375 * 100);
+        margin-bottom: 0;
+        padding-right: calc(16vw /375 * 100);
+    }
+    .bl_fv_price_text-5 span {
+        font-size: calc(16vw / 375 * 100);
+    }
+    .bl_fv_price_text-6 {
+        width: 100vw;
+        margin: calc(50% - 50vw);
+        color: #fff;
+        font-size: calc(11vw / 375 * 100);
+        max-width: inherit;
+        padding: calc(16vw / 375 * 100);
+
+        background-image: url("https://kansha-ososhiki.com/wp-content/uploads/2023/06/fv-price-bg.png");
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        background-size: cover;
+    }
+    .bl_fv_price_wapper {
+        background-image: none;
+        background: #312f2f;
+        margin-top: calc(32vw / 375 * 100);
+    }
+    .el_fv_wapper_el {
+        padding-top: 20px;
+        padding-bottom: 24px;
+    }
+    .bl_fv_in {
+        display: block;
+    }
+
+    /* fv-btn */
+    .bl_fv_bt_wapper {
+        display: block;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        max-width: 481px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .bl_fv_bt_left {
+        padding-bottom: 12px;
+    }
+    .bl_fv_bt_btn {
+        max-height: 70px;
+        max-width: 100%;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .bl_fv_bt_text-1 {
+        font-size: 14px;
+    }
+}

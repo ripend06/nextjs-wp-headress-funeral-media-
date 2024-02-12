@@ -10,8 +10,8 @@ import { getPrefecturePost } from '@/libs/place/getPrefecturePost';
 import { getAllPostsSlugData } from '@/libs/place/getAllPostsSlugData';
 import { updatedPostsData } from '@/libs/place/updatedPostsData';
 import FuneralMap from './componetns/googleMap/GoogleMap';
-import CtaS from './componetns/cta/CtaS';
-import CtaL from './componetns/cta/CtaL';
+import CtaS from './componetns/includes/cta/CtaS';
+import CtaL from './componetns/includes/cta/CtaL';
 import Footer from './componetns/includes/Footer';
 import Header from './componetns/includes/Header';
 import SpFloating from './componetns/includes/spFloating';
@@ -25,6 +25,7 @@ import { getPostsData } from '@/libs/posts/getPostsData';
 export default function Place( {updatedPrefecturePostsData, updatedPrefectureLimitPostsData, updatedAllPostsDataB, Limit4PostsNewsData, Limit4PostsData} ) {
 
   //console.log('updatedPrefectureLimitPostsData', updatedPrefectureLimitPostsData);
+  // slickホバー停止機能
   const [isHovered, setIsHovered] = useState(false);
   
     const settings = {
@@ -56,6 +57,7 @@ export default function Place( {updatedPrefecturePostsData, updatedPrefectureLim
 
   return (
     <>
+      <div className="TopPage">
           <div className="topIndex">
             <Head>
                 <title>TOP</title>
@@ -960,55 +962,10 @@ export default function Place( {updatedPrefecturePostsData, updatedPrefectureLim
             <SpFloating />
 
           </footer>
-
-        </>
+      </div>
+    </>
   )
 }
-
-
-/* 自動スクロール *//*
-$(document).ready(function() {
-	var setElm = $('.loopSlider'),
-	slideSpeed = 15000; //速度
-
-	if ($(window).width() <= 768) {
-		slideSpeed = 20000; // 画面幅768px以下の場合の速度
-	}
-
-	setElm.each(function(){
-		var self = $(this),
-		selfWidth = self.innerWidth(),
-		findUl = self.find('ul'),
-		findLi = findUl.find('li'),
-		listWidth = findLi.outerWidth(),
-		listCount = findLi.length,
-		loopWidth = listWidth * listCount;
-
-		findUl.wrapAll('<div className="loopSliderWrap" />');
-		var selfWrap = self.find('.loopSliderWrap');
-
-		if(loopWidth > selfWidth){
-			findUl.css({width:loopWidth}).clone().appendTo(selfWrap);
-
-			selfWrap.css({width:loopWidth*2});
-
-			function loopMove(){
-				selfWrap.animate({left:'-' + (loopWidth) + 'px'},slideSpeed*listCount,'linear',function(){
-					selfWrap.css({left:'0'});
-					loopMove();
-				});
-			};
-			loopMove();
-
-			//ホバーでストップさせる
-			setElm.hover(function() {
-				selfWrap.pause();
-			}, function() {
-				selfWrap.resume();
-			});
-		}
-	});
-});*/
 
 
 //SSG実装

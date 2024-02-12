@@ -1,0 +1,374 @@
+@charset "UTF-8";
+/*==========================*/
+/****** ブレイクポイント ******/
+/*==========================*/
+/*==========================*/
+/********* カラー変数 *********/
+/*==========================*/
+/*==========================*/
+/********* テキスト変数 *********/
+/*==========================*/
+body {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+/*==========================*/
+/****** スペーシング ******/
+/*==========================*/
+/*==========================*/
+/****** セクションインナー ******/
+/*==========================*/
+#pagePlanDetails .head {
+  margin-top: 10.125rem;
+  margin-bottom: 1rem;
+}
+@media screen and (max-width: 1100px) {
+  #pagePlanDetails .head {
+    margin-top: 4.125rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  #pagePlanDetails .head {
+    margin-top: 4.125rem;
+  }
+}
+#pagePlanDetails .ohanashiki .planDetailMv__bar {
+  background-color: #CB5D7F;
+}
+#pagePlanDetails .ohanashiki .planDetailMv__main {
+  background-color: #F5E6EC;
+}
+#pagePlanDetails .ohanashiki .planDetailMv__days {
+  background-color: #CB5D7F;
+}
+#pagePlanDetails .ohanashiki .planDetailMv__planName {
+  color: #A43F60;
+}
+#pagePlanDetails .ohanashiki .planDetailMv__priceWrap {
+  color: #A43F60;
+  border-bottom: 1px dotted #A43F60;
+}
+#pagePlanDetails .kasoshiki .planDetailMv__bar {
+  background-color: #8DAD51;
+}
+#pagePlanDetails .kasoshiki .planDetailMv__main {
+  background-color: #F3F7EA;
+}
+#pagePlanDetails .kasoshiki .planDetailMv__days {
+  background-color: #8DAD51;
+}
+#pagePlanDetails .kasoshiki .planDetailMv__planName {
+  color: #66853C;
+}
+#pagePlanDetails .kasoshiki .planDetailMv__priceWrap {
+  color: #66853C;
+  border-bottom: 1px dotted #66853C;
+}
+#pagePlanDetails .kazokuso .planDetailMv__bar {
+  background-color: #8946A4;
+}
+#pagePlanDetails .kazokuso .planDetailMv__main {
+  background-color: #F0E7F4;
+}
+#pagePlanDetails .kazokuso .planDetailMv__days {
+  background-color: #8946A4;
+}
+#pagePlanDetails .kazokuso .planDetailMv__planName {
+  color: #6D3A94;
+}
+#pagePlanDetails .kazokuso .planDetailMv__priceWrap {
+  color: #6D3A94;
+  border-bottom: 1px dotted #6D3A94;
+}
+#pagePlanDetails .simpleso .planDetailMv__bar {
+  background-color: #5FBBC6;
+}
+#pagePlanDetails .simpleso .planDetailMv__main {
+  background-color: #E4F5F6;
+}
+#pagePlanDetails .simpleso .planDetailMv__days {
+  background-color: #5FBBC6;
+}
+#pagePlanDetails .simpleso .planDetailMv__planName {
+  color: #418C95;
+}
+#pagePlanDetails .simpleso .planDetailMv__priceWrap {
+  color: #418C95;
+  border-bottom: 1px dotted #418C95;
+}
+#pagePlanDetails .ippanso .planDetailMv__bar {
+  background-color: #DF8152;
+}
+#pagePlanDetails .ippanso .planDetailMv__main {
+  background-color: #F5EAE7;
+}
+#pagePlanDetails .ippanso .planDetailMv__days {
+  background-color: #DF8152;
+}
+#pagePlanDetails .ippanso .planDetailMv__planName {
+  color: #B75B2C;
+}
+#pagePlanDetails .ippanso .planDetailMv__priceWrap {
+  color: #B75B2C;
+  border-bottom: 1px dotted #B75B2C;
+}
+#pagePlanDetails .barairoso .planDetailMv__bar {
+  background-color: #D54E4B;
+}
+#pagePlanDetails .barairoso .planDetailMv__main {
+  background-color: #F9EBEF;
+}
+#pagePlanDetails .barairoso .planDetailMv__days {
+  background-color: #D54E4B;
+}
+#pagePlanDetails .barairoso .planDetailMv__planName {
+  color: #AA3639;
+}
+#pagePlanDetails .barairoso .planDetailMv__priceWrap {
+  color: #AA3639;
+  border-bottom: 1px dotted #AA3639;
+}
+#pagePlanDetails .ichinichiso .planDetailMv__bar {
+  background-color: #C6BA58;
+}
+#pagePlanDetails .ichinichiso .planDetailMv__main {
+  background-color: #FDFCEB;
+}
+#pagePlanDetails .ichinichiso .planDetailMv__days {
+  background-color: #C6BA58;
+}
+#pagePlanDetails .ichinichiso .planDetailMv__planName {
+  color: #907F42;
+}
+#pagePlanDetails .ichinichiso .planDetailMv__priceWrap {
+  color: #907F42;
+  border-bottom: 1px dotted #907F42;
+}
+#pagePlanDetails .about {
+  padding: 3.5rem 0;
+}
+@media screen and (max-width: 768px) {
+  #pagePlanDetails .about {
+    padding: 2rem 0;
+  }
+}
+#pagePlanDetails .about .container {
+  width: 100%;
+}
+#pagePlanDetails .about__head {
+  margin-bottom: 2rem;
+}
+#pagePlanDetails .about__title {
+  color: #A43F60;
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+#pagePlanDetails .about__title::after {
+  content: "";
+  background-color: #A43F60;
+  width: 3.5rem;
+  height: 0.25rem;
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#pagePlanDetails .about .content + .content {
+  margin-top: 0.625rem;
+}
+#pagePlanDetails .about .headingWrap--h3Underline {
+  margin-bottom: 1rem;
+}
+#pagePlanDetails .about .content1__listWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+}
+@media screen and (max-width: 768px) {
+  #pagePlanDetails .about .content1__listWrap {
+    flex-direction: column;
+  }
+}
+#pagePlanDetails .about .content1__list {
+  background-color: rgba(49, 47, 47, 0.05);
+  padding: 0 2rem;
+  height: 12.5rem;
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media screen and (max-width: 768px) {
+  #pagePlanDetails .about .content1__list {
+    width: 100%;
+  }
+}
+#pagePlanDetails .about .content2__sup {
+  margin-top: 0.5rem;
+}
+#pagePlanDetails .about .content3 .staffComment--2 {
+  margin-bottom: 1rem;
+}
+#pagePlanDetails .about .content3__inner {
+  flex-wrap: nowrap;
+}
+#pagePlanDetails .about .content3__inner + .content3__inner {
+  margin-top: 1rem;
+}
+@media screen and (max-width: 768px) {
+  #pagePlanDetails .about .content3__inner {
+    padding: 1rem 1rem;
+  }
+}
+#pagePlanDetails .about .content3__inner .h4--sm {
+  margin-bottom: 0.5rem;
+}
+#pagePlanDetails .includedService, #pagePlanDetails .optionService {
+  margin-bottom: 3.5rem;
+}
+#pagePlanDetails .includedService .headingWrap--h3Underline, #pagePlanDetails .optionService .headingWrap--h3Underline {
+  margin-bottom: 1rem;
+}
+#pagePlanDetails .includedService .planItemGroup, #pagePlanDetails .optionService .planItemGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+@media screen and (max-width: 768px) {
+  #pagePlanDetails .includedService .planItemGroup, #pagePlanDetails .optionService .planItemGroup {
+    gap: 0.5rem;
+  }
+}
+#pagePlanDetails .includedService__sup .iconText + .iconText, #pagePlanDetails .optionService__sup .iconText + .iconText {
+  margin-left: 1.5rem;
+}
+#pagePlanDetails .compare {
+  margin-bottom: 3.5rem;
+}
+#pagePlanDetails .compare .headingWrap--h3Underline {
+  margin-bottom: 1rem;
+}
+#pagePlanDetails .compare__main {
+  display: flex;
+  justify-content: space-between;
+  gap: 0 1rem;
+  margin-bottom: 1rem;
+}
+@media screen and (max-width: 768px) {
+  #pagePlanDetails .compare__main {
+    overflow-x: scroll;
+  }
+}
+#pagePlanDetails .compare__tableWrap {
+  width: 50%;
+}
+@media screen and (max-width: 768px) {
+  #pagePlanDetails .compare__tableWrap {
+    width: 80%;
+  }
+}
+#pagePlanDetails .compare__tableTitle {
+  padding: 0.5rem 1rem;
+  border-top: 1px solid rgba(49, 47, 47, 0.1);
+  border-right: 1px solid rgba(49, 47, 47, 0.1);
+  border-left: 1px solid rgba(49, 47, 47, 0.1);
+}
+#pagePlanDetails .compare__tableTitle.ohanashiki .h4--default {
+  color: #A43F60;
+}
+#pagePlanDetails .compare__tableTitle.kasoshiki .h4--default {
+  color: #66853C;
+}
+#pagePlanDetails .compare__tableTitle.kazokuso .h4--default {
+  color: #6D3A94;
+}
+#pagePlanDetails .compare__tableTitle.simpleso .h4--default {
+  color: #418C95;
+}
+#pagePlanDetails .compare__tableTitle.ippanso .h4--default {
+  color: #B75B2C;
+}
+#pagePlanDetails .compare__tableTitle.barairoso .h4--default {
+  color: #AA3639;
+}
+#pagePlanDetails .compare__tableTitle.ichinichiso .h4--default {
+  color: #907F42;
+}
+#pagePlanDetails .compare .tagWrap {
+  display: flex;
+  align-items: center;
+  gap: 0 0.25rem;
+}
+#pagePlanDetails .compare .tag {
+  min-height: 7.125rem;
+}
+#pagePlanDetails .compare .tagArrow {
+  width: 1rem;
+  height: 0.5rem;
+}
+@media screen and (max-width: 768px) {
+  #pagePlanDetails .compare .table2--col1__tr {
+    flex-direction: row;
+  }
+}
+#pagePlanDetails .compare .table2--col1__th {
+  white-space: normal;
+  width: 22%;
+}
+#pagePlanDetails .compare .table2--col1__td {
+  width: 78%;
+}
+#pagePlanDetails .flow {
+  padding-top: 3.5rem;
+  margin-bottom: 3.5rem;
+}
+#pagePlanDetails .flow .headingWrap--h3Underline {
+  margin-bottom: 1rem;
+}
+@media screen and (max-width: 768px) {
+  #pagePlanDetails .flow .h4--default {
+    font-size: 1.125rem;
+  }
+}
+#pagePlanDetails .toSimulator {
+  margin-bottom: 3.5rem;
+}
+#pagePlanDetails .toSimulator .bgImgBlock {
+  background-image: url("https://kansha-ososhiki.com/wp-content/uploads/2023/09/toSimulator.png");
+}
+#pagePlanDetails .searchPlace {
+  padding-top: 3.5rem;
+  margin-bottom: 3.5rem;
+}
+#pagePlanDetails .searchPlace .h2--default {
+  margin-bottom: 1.5rem;
+}
+#pagePlanDetails .searchPlace .headingWrap--h3Underline {
+  margin-bottom: 2rem;
+}
+#pagePlanDetails .toHowto {
+  margin-bottom: 3.5rem;
+}
+#pagePlanDetails .toHowto .bgImgBlock {
+  background-image: url("https://kansha-ososhiki.com/wp-content/uploads/2023/09/toHowto.png");
+}
+#pagePlanDetails .modal .table2--col1__tr {
+  display: table-row;
+}
+#pagePlanDetails .modal .table2--col1__th {
+  width: 24%;
+  text-align: left;
+}
+#pagePlanDetails .modal .table2--col1__td {
+  width: 38%;
+}
+#pagePlanDetails .modal .cta--m {
+  padding: 1.5rem 2rem;
+}
+@media screen and (max-width: 768px) {
+  #pagePlanDetails .modal .cta--m {
+    padding: 1.5rem 1rem;
+  }
+}

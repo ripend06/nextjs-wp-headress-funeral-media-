@@ -1,0 +1,101 @@
+@import "./variables"; // 変数
+//@import "./components"; // Components
+
+/* column */
+.ly_column{
+    padding-top:40px;
+    padding-bottom:48px;
+}
+.bl_column_text-1{
+    color: var(--black-100, #312F2F);
+    text-align: center;
+    font-size: 32px;
+    font-family: "noto-sans-cjk-jp", sans-serif;
+    font-weight: $bold;
+    line-height: 170%;
+    padding-bottom:4px;
+}
+.bl_column_text-2{
+    color: var(--black-80, rgba(49, 47, 47, 0.80));
+    text-align: center;
+    font-size: 16px;
+    font-family: "noto-sans-cjk-jp", sans-serif;
+    line-height: 170%;
+    padding-bottom:24px;
+}
+.bl_column_wapper_card{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap:32px;
+}
+.bl_column_card{
+    max-width: 236px;
+    width: 100%;
+}
+.bl_column_c_text-1{
+    color: var(--black-100, #312F2F);
+    font-size: 14px;
+    font-family: "noto-sans-cjk-jp", sans-serif;
+    font-weight: 700;
+    line-height: 170%;
+    padding-top:16px;
+    padding-bottom:12px;
+}
+.bl_column_c_text-2{
+    color: var(--black-80, rgba(49, 47, 47, 0.80));
+    font-size: 14px;
+    font-family: "noto-sans-cjk-jp", sans-serif;
+    line-height: 170%;
+}
+.bl_column_btn{
+    color: var(--black-100, #312F2F);
+    font-size: 16px;
+    font-family: "noto-sans-cjk-jp", sans-serif;
+    font-weight: 700;
+
+    display: flex;
+    height: 57px;
+    padding-top:8px;
+    padding-bottom:8px;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 7px;
+    border: 1px solid rgba(49, 47, 47, 0.20);
+    background: var(--white-100, #FFF);
+    box-shadow: 0px 4px 0px 0px rgba(49, 47, 47, 0.20);
+    max-width: 239px;
+    width: 100%;
+    margin:0 auto;
+    margin-top:24px;
+}
+
+@media screen and (max-width: 768px) {
+
+    /* columu */
+    .bl_column_text-1 {
+        font-size: calc(20vw / 375 * 100);
+    }
+    .bl_column_text-2 {
+        font-size: 14px;
+    }
+    .ly_column {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .bl_column_wapper_card {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 8px;
+        grid-row-gap: 32px;
+    }
+    .bl_column_c_text-1 {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+    .bl_column_card {
+        max-width: 100%;
+    }
+}
